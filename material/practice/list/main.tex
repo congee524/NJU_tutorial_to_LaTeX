@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+
+
+\begin{document}
+
+List are really easy to create
+ 
+\begin{itemize}
+    \item One entry in the list
+    \item Another entry in the list
+\end{itemize}
+
+\section{Unordered lists}
+
+\begin{itemize}
+    \item The individual entries are indicated with a black dot, a so-called bullet.
+    \item The text in the entries may be of any length.
+\end{itemize}
+
+\section{Ordered lists}
+
+\begin{enumerate}
+    \item The labels consists of sequential numbers.
+    \item The numbers starts at 1 with every call to the enumerate environment.
+\end{enumerate}
+
+\section{Nested Lists}
+
+\begin{enumerate}
+    \item The labels consists of sequential numbers.
+        \begin{itemize}
+            \item The individual entries are indicated with a black dot, a so-called bullet.
+            \item The text in the entries may be of any length.
+        \end{itemize}
+    \item The numbers starts at 1 with every call to the enumerate environment.
+\end{enumerate}
+
+\section{Lists styles}
+
+\subsection{Ordered lists}
+
+\begin{enumerate}
+    \item First level item
+    \item First level item
+        \begin{enumerate}
+            \item Second level item
+            \item Second level item
+                \begin{enumerate}
+                    \item Third level item
+                    \item Third level item
+                        \begin{enumerate}
+                            \item Fourth level item
+                            \item Fourth level item
+                        \end{enumerate}
+                 \end{enumerate}
+         \end{enumerate}
+ \end{enumerate}
+ 
+\renewcommand{\labelenumii}{\Roman{enumii}}
+\begin{enumerate}
+    \item First level item
+    \item First level item
+        \begin{enumerate}
+            \item Second level item
+            \item Second level item
+                \begin{enumerate}
+                    \item Third level item
+                    \item Third level item
+                        \begin{enumerate}
+                            \item Fourth level item
+                            \item Fourth level item
+                        \end{enumerate}
+                \end{enumerate}
+        \end{enumerate}
+\end{enumerate}
+ 
+\begin{enumerate}
+    \item First level item
+    \item First level item
+        \begin{enumerate}
+            \setcounter{enumii}{4}
+            \item Second level item
+            \item Second level item
+                \begin{enumerate}
+                    \item Third level item
+                    \item Third level item
+                        \begin{enumerate}
+                            \item Fourth level item
+                            \item Fourth level item
+                        \end{enumerate}
+                \end{enumerate}
+        \end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}[label=(\arabic*)]
+    \item First level item
+    \item First level item
+        \begin{enumerate}[label=\alph*)]
+            \item Second level item
+            \item Second level item
+        \end{enumerate}
+\end{enumerate}
+
+ 
+\subsection{Unordered lists}
+ 
+\begin{itemize}
+    \item  First Level
+        \begin{itemize}
+            \item  Second Level
+                \begin{itemize}
+                    \item  Third Level
+                        \begin{itemize}
+                            \item  Fourth Level
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\renewcommand{\labelitemi}{$\blacksquare$}
+\renewcommand\labelitemii{$\square$}
+\begin{itemize}
+    \item  First Level
+        \begin{itemize}
+            \item  Second Level
+                \begin{itemize}
+                    \item  Third Level
+                        \begin{itemize}
+                            \item  Fourth Level
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item  Default item label for entry one
+    \item  Default item label for entry two
+    \item[$\square$]  Custom item label for entry three
+\end{itemize}
+
+\end{document}

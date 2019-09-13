@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{array}
+\graphicspath{ {figures/} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%下面是列出表格和图片的指令，自己编译试试
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addto\captionsenglish{
+\renewcommand{\listfigurename}{List of plots}
+}
+
+\addto\captionsenglish{
+\renewcommand{\listtablename}{Tables}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\listoffigures
+
+\listoftables
+
+\clearpage
+
+\pagenumbering{arabic}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Etiam lobortisfacilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdietmi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultricesaugue, a dignissim nibh lectus placerat pede.  Vivamus nunc nunc, molestieut, ultricies vel, semper in, velit.  Ut porttitor.  Praesent in sapien.  Loremipsum dolor sit amet, consectetuer adipiscing elit. 
+
+Duis fringilla tristique neque.Sed interdum libero ut metus.  Pellentesque placerat.  Nam rutrum augue aleo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blanditmauris.  Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis.Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsansemper.
+
+\begin{figure}
+\centering
+\includegraphics[width=8cm]{Pgfplot3d3}
+\caption{Three dimensional graph}
+\label{fig:figure1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{pgfplots3d1}
+\caption{Second 3d plot}
+\label{fig:figure2}
+\end{figure}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis
+facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet
+mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices
+augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie
+ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem
+ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque.
+
+\begin{table}[h]
+\centering
+ \begin{tabular}{||c c c c||} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ \hline
+ 2 & 7 & 78 & 5415 \\
+ \hline
+ 3 & 545 & 778 & 7507 \\
+ \hline
+ 4 & 545 & 18744 & 7560 \\
+ \hline
+ 5 & 88 & 788 & 6344 \\ [1ex] 
+ \hline
+ \end{tabular}
+\caption{First table}
+\label{tab:table1}
+\end{table}
+
+Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a
+leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit
+mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis.
+Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan
+semper.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Scattered}
+\caption{Scattered plot}
+\label{fig:figure3}
+\end{figure}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis
+facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet
+mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices
+augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie
+ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem
+ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ | p{3cm} | p{3cm} | p{3cm} |  }
+ \hline
+ \multicolumn{3}{|c|}{Country List} \\
+ \hline
+ Country Name	 or Area Name& ISO ALPHA 2 Code	&ISO ALPHA 3 \\
+ \hline
+ Afghanistan & AF &AFG \\
+ Aland Islands & AX	& ALA \\
+ Albania	&AL	& ALB \\
+ Algeria	&DZ	& DZA \\
+ American Samoa & AS & ASM \\
+ Andorra & AD & AND	\\
+ Angola & AO & AGO \\
+ \hline
+ \end{tabular}
+\caption{Dummy table}
+\label{tab:table2}
+\end{table}
+
+Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a
+leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit
+mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis.
+Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan
+semper.
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis
+facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet
+mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices
+augue, a dignissim nibh lectus placerat pede. Vivamus nunc nunc, molestie
+ut, ultricies vel, semper in, velit. Ut porttitor. Praesent in sapien. Lorem
+ipsum dolor sit amet, consectetuer adipiscing elit. Duis fringilla tristique neque.
+
+\begin{table}[]
+\centering
+\begin{tabular}{ | c | c | c | } 
+  \hline
+  cell1 & cell2 & cell3 \\ 
+  cell4 & cell5 & cell6 \\ 
+  cell7 & cell8 & cell9 \\ 
+  \hline
+\end{tabular}
+\caption{Third table}
+\label{tab:table3}
+\end{table}
+
+Sed interdum libero ut metus. Pellentesque placerat. Nam rutrum augue a
+leo. Morbi sed elit sit amet ante lobortis sollicitudin. Praesent blandit blandit
+mauris. Praesent lectus tellus, aliquet aliquam, luctus a, egestas a, turpis.
+Mauris lacinia lorem sit amet ipsum. Nunc quis urna dictum turpis accumsan
+semper
+
+\end{document}

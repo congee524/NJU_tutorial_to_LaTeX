@@ -1,0 +1,7 @@
+article    排版科技期刊、短报告、程序文档、邀请函等。
+report    排版多章节的长报告、短篇的书籍、博士论文等。
+book    排版书籍。
+slides    排版幻灯片。其中使用了较大的 sans serif 字体。也可以考虑使用 FoilTEX 来得到相同的效果。
+
+
+WinEdt 编辑器的默认中文编码为GBK，而TeXworks 编辑器的默认中文编码为UTF8。

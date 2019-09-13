@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath,mathtools}
+\newcommand{\di}{\,\mathrm{d}}
+\newcommand{\partialratio}[3]{%
+\left(\dfrac{\partial #1}{\partial #2}\right)_{#3}}
+\newcommand{\set}[2]{%
+\left\{#1 \middle\vert #2 \right\}}
+\begin{document}
+	由恰当微分的性质可导出Maxwell关系式
+
+	\noindent (按括号对齐)
+	\begin{equation}
+		\left.
+		\begin{rgathered}
+			\di U = T \di S - p \di V \\
+			\di H = T \di S + V \di p \\
+			\di A = - S \di T - p \di V \\
+			\di G = - S \di T + V \di p
+		\end{rgathered}
+		\right\} \Rightarrow \left\{
+		\begin{lgathered}
+			\partialratio{T}{V}{S} = - \partialratio{p}{S}{V} \\
+			\partialratio{T}{p}{S} = \partialratio{V}{S}{p} \\
+			\partialratio{S}{V}{T} = \partialratio{p}{T}{V} \\
+			\partialratio{S}{p}{T} = - \partialratio{V}{T}{p}
+		\end{lgathered}
+		\right.
+	\end{equation}
+
+	\noindent （按等号对齐）
+	\begin{equation}
+		\left.
+		\begin{aligned}
+			\di U &= T \di S - p \di V \\
+			\di H &= T \di S + V \di p \\
+			\di A &= - S \di T - p \di V \\
+			\di G &= - S \di T + V \di p
+		\end{aligned}
+		\right\} \Rightarrow \left\{
+		\begin{aligned}
+			\partialratio{T}{V}{S} &= - \partialratio{p}{S}{V} \\
+			\partialratio{T}{p}{S} &= \partialratio{V}{S}{p} \\
+			\partialratio{S}{V}{T} &= \partialratio{p}{T}{V} \\
+			\partialratio{S}{p}{T} &= - \partialratio{V}{T}{p}
+		\end{aligned}
+		\right.
+	\end{equation}
+
+	\vspace{2cm}
+	一个高次方程的解集
+	\begin{equation}
+		\Omega = \set{x}{\begin{multlined}
+		x^7 + x^6 + x^5 \\ + x^4 + x^3 + x^2 \\ + x + 1 = 0
+		\end{multlined}}
+	\end{equation}
+\end{document}

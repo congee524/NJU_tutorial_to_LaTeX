@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+
+\title{Cross referencing}
+\author{ }
+\date{ }
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction} \label{introduction}
+This is an introductory paragraph with some dummy text. This section will be later referenced.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\linewidth]{lion-logo.png}
+\caption{This image will be referenced below}
+\label{fig:lion}
+\end{figure}
+
+You can reference images, for instance, the image \ref{fig:lion} shows the logo of \textit{ShareLaTeX learn}
+
+\Blindtext
+
+\section{Math references} \label{mathrefs}
+As mentioned in section \ref{introduction}, different elements can be referenced within a document
+
+\subsection{powers series} \label{subsection}
+
+\begin{equation} \label{eq:1}
+\sum_{i=0}^{\infty} a_i x^i
+\end{equation}
+
+The equation \ref{eq:1} is a typical power series.
+
+\Blindtext
+
+\section{Last section}
+In the subsection \ref{subsection} at the page \pageref{eq:1} an example of a power series was presented.
+
+\end{document}

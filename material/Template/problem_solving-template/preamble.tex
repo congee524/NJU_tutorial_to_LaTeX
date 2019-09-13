@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% File: preamble.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{geometry}
+\geometry{left = 2cm, right = 2cm, top = 1.5cm, bottom = 1.5cm}
+
+% Set fonts commands
+\newcommand{\song}{\CJKfamily{song}} 
+\newcommand{\hei}{\CJKfamily{hei}} 
+\newcommand{\kai}{\CJKfamily{kai}} 
+\newcommand{\fs}{\CJKfamily{fs}}
+\newcommand{\tqs}{\textquotesingle}
+\usepackage{fontawesome}
+
+\newcommand{\me}[2]{\author{{\bfseries 姓名：}\underline{#1}\hspace{2em}{\bfseries 学号：}\underline{#2}}}
+
+% Always keep this.
+\newcommand{\noplagiarism}{
+  \begin{center}
+    \fbox{\begin{tabular}{@{}c@{}}
+      请独立完成作业，不得抄袭。\\
+      若参考了其它资料，请给出引用。\\
+      鼓励讨论，但需独立书写解题过程。
+    \end{tabular}}
+  \end{center}
+}
+
+% Each hw consists of three parts:
+% (1) this homework
+\newcommand{\beginthishw}{\part{作业}}
+% (2) corrections (Optional)
+\newcommand{\begincorrection}{\part{订正}}
+% (3) any feedback (Optional)
+\newcommand{\beginfb}{\part{反馈}}
+
+% For math
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+%\usepackage{clrscode3e} 
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{P}{>{\centering\arraybackslash}p}
+%bigger integrate symbol
+\usepackage{exscale}
+\usepackage{relsize}
+\usepackage{textcomp}
+
+% colors
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\teal}[1]{\textcolor{teal}{#1}}
+
+% algorithms
+\usepackage[]{algorithm}
+\usepackage[noend]{algpseudocode} % noend
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled 画线
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled 画线
+   \end{center}
+  }
+\makeatother
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+% See [Adjust the indentation whithin the algorithmicx-package when a line is broken](https://tex.stackexchange.com/a/68540/23098)
+\newcommand{\algparbox}[1]{\parbox[t]{\dimexpr\linewidth-\algorithmicindent}{#1\strut}}
+\newcommand{\hStatex}[0]{\vspace{5pt}}
+\makeatletter
+\newlength{\trianglerightwidth}
+\settowidth{\trianglerightwidth}{$\triangleright$~}
+\algnewcommand{\LineComment}[1]{\Statex \hskip\ALG@thistlm \(\triangleright\) #1}
+\algnewcommand{\LineCommentCont}[1]{\Statex \hskip\ALG@thistlm%
+  \parbox[t]{\dimexpr\linewidth-\ALG@thistlm}{\hangindent=\trianglerightwidth \hangafter=1 \strut$\triangleright$ #1\strut}}
+\makeatother
+
+
+% Define theorem-like environments
+\usepackage[amsmath, thmmarks, framed]{ntheorem}
+\usepackage{framed}
+
+\theoremheaderfont{\kai\bfseries}
+\theoremstyle{break}
+\theorembodyfont{\song}
+\theoremseparator{\vspace{1mm}}
+\renewcommand*\FrameCommand{{\color{gray}\vrule width 3pt \hspace{10pt}}}
+\newframedtheorem{problem}{\faCheckSquareO \ Problem}
+
+\theorempostwork{\hrule}
+\newtheorem*{solution}{\faEdit \ Solution}
+\newtheorem*{revision}{\faEdit \ Revision}
+
+\theoremstyle{plain}
+\newtheorem*{cause}{\faCoffee \ Cause}
+\newtheorem*{remark}{\faCommentingO \ Remark}
+
+\theoremstyle{break}
+\theoremsymbol{\ensuremath{\Box}}
+\newtheorem*{proof}{\faEdit \ Proof}
+
+\renewcommand\figurename{Figure}
+\renewcommand\tablename{Table}
+
+%enumeration
+\setenumerate[1]{
+	itemsep=0pt,
+	partopsep=0pt,
+	parsep=\parskip,
+	topsep=0pt,
+	leftmargin=20pt
+}
+\setitemize[1]{
+	itemsep=0pt,
+	partopsep=0pt,
+	parsep=\parskip,
+	topsep=0pt,
+	leftmargin=20pt
+}
+\setdescription{
+	itemsep=0pt,
+	partopsep=0pt,
+	parsep=\parskip,
+	topsep=0pt,
+	leftmargin=20pt
+}
+\lstset{
+	language={[ISO]C++},
+    numbers=left, 
+    numberstyle= \tiny,
+    commentstyle=\color{red!50!green!50!blue!50},  
+  	rulesepcolor=\color{red!20!green!20!blue!20},  
+ 	keywordstyle=\color{blue!90}\bfseries,   
+  	showstringspaces=false, 
+  	stringstyle=\ttfamily,
+} 
+
+
+% For figures
+% for fig with caption: #1: width/size; #2: fig file; #3: fig caption
+\newcommand{\fig}[3]{
+	\centerline{\includegraphics[scale=#1]{#2}}
+	\centerline{#3}
+}
+
+% for fig without caption: #1: width/size; #2: fig file
+\newcommand{\fignc}[2]{
+	\centerline{\includegraphics[scale=#1]{#2}}
+}

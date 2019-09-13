@@ -1,0 +1,61 @@
+\documentclass{ctexbeamer}
+\ctexset{today=old}
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{upgreek}
+\usepackage{listings}
+\usepackage{cprotect}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{esint}
+\usepackage{bm}
+\usepackage{pgf}
+\usepackage{etoolbox}
+\usepackage{ulem}
+\usepackage{multirow}
+\usepackage{metalogo}
+\usepackage{array}
+\usepackage{caption,subcaption}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\sign}{sgn}
+\newcommand{\di}{\,\mathrm{d}}
+\newcommand{\partialratio}[3]{\left(\dfrac{\partial #1}{\partial #2}\right)_{#3}}
+\newcommand{\todi}[3]{\di #1 = \partialratio{#1}{#2}{#3}\di #2 + \partialratio{#1}{#3}{#2}\di #3}
+\newcommand{\clean}{\setcounter{equation}{0}}
+\lstset{
+	language=[LaTeX]TeX, 
+	escapeinside=``, 
+	breaklines=true, 
+	backgroundcolor=\color{lightgray!40!white}, 
+	frame=none, 
+	extendedchars=false, 
+	keywordstyle=\color{blue!70}\bfseries, 
+	basicstyle=\ttfamily, 
+	commentstyle=\ttfamily\color{green!40!black}, 
+	showstringspaces=false
+}
+\usetheme{CambridgeUS}
+\usecolortheme{dolphin}
+\usefonttheme{professionalfonts}
+\title[\LaTeX 教程]{\LaTeX ~Tutorials}
+\subtitle{Simple and professional}
+\author[高嵩，黄秉焜]{Song Gao, Bingkun Huang}
+\institute[南京大学]{Nanjing University}
+\date[2018.10.28]{\today}
+\logo{\includegraphics[width=15pt]{img/NJU.jpg}}
+
+\makeatletter 
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.7em}{}{} 
+\makeatother 
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \tableofcontents[currentsection,hideallsubsections]
+    \end{frame}
+}
+\AtBeginSubsection[]
+{
+    \begin{frame}
+        \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+    \end{frame}
+}

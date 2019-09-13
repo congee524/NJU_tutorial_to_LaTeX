@@ -1,0 +1,63 @@
+\section{其他}
+    
+    \begin{frame}[fragile]
+        \frametitle{小建议}
+        \begin{itemize}
+            \item 要学会自学！自学！自学！
+            \item 学会看错误日志（红色的那个），\textbf{耐下心来读英文}（其实不少人看到红色的字符串就不想认真读，然后自己肉眼挑BUG，或者问别人），自己解决不了的时候，一个很好的办法，是复制你的错误信息，以及你刚做的事的关键词（比如某个指令名），贴到搜索框搜索（当然是英文）\pause
+             \item 对于上面这点，举个小例子：\verb|"!Undefined control sequence."|，这是一个伴随你一生的报错，绝大部分都可归为以下三种原因的一种:
+                 \begin{itemize}
+                     \item 拼错了！
+                     \item 没导入宏包！
+                     \item 用了不存在的指令！
+                 \end{itemize}
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}[fragile]{小建议}
+        \begin{itemize}
+            \item 另一位主讲人想要分享他昨晚（今天凌晨）的惨痛教训
+            \item 遇到报错信息 \verb|Beamer - ! File ended while scanning use of \next|
+            \item 尝试注释法肉眼找bug半小时无果
+            \item 网上一查，错误原因是这样的
+            \begin{figure}
+                \centering
+                \includegraphics[width=.7\textwidth]{img/bug}
+            \end{figure}
+            \item 最后发现是在某个\verb|\end{frame}|后加了一个空格
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}[fragile]
+        \frametitle{小建议}
+        \begin{itemize}
+            \item 基础设施很重要！抽个时间，去专门学习你使用的编辑器是很有必要的。
+            \item 关于上面这点，做些解释：
+            \begin{itemize}
+                \item 使用Tab键把你正在写的指令瞬间补全，也许就能省下百分之十的时间，积累起来就能让你多活一天！所以找个时间把常用的指令录进编辑器的代码补全里面是不是很有必要？（当然，花时间去网上找拓展包也是一样的）
+                \item 再比如，自定义一个宏编译，设置为xelatex + bibtex + xelatex + xelatex，这样你按一个键就能完成引用的生成，是不是觉得很舒服？
+                \item 夜晚看屏幕伤眼，心里也难受，所以换一个护眼又好看的主题皮肤是不是很好？
+            \end{itemize}\pause
+            \item 熟能生巧，可以渐渐用latex代替word去做平时的作业，可能一开始会有点慢，但当你渐渐熟悉自己的几个模板之后，速度就能反超word，还更好看
+        \end{itemize}
+    \end{frame}
+    
+    \begin{frame}[fragile]
+        \begin{figure}
+        \includegraphics[width=0.45\textwidth]{img//tip.png}
+        \end{figure}
+        \begin{center}
+        欢迎大家报名下一届学术软件教学系列讲座主讲人！
+        \end{center}
+    \end{frame}
+    
+    \begin{frame}[fragile]
+        \frametitle{资源分享}
+        \begin{itemize}
+            \item \url{https://www.sharelatex.com/}
+            \item \url{https://tex.stackexchange.com/}
+            \item \url{http://tug.ctan.org/tex-archive/} 找文档，找手册！\\
+            镜像站：\url{http://mirrors.ustc.edu.cn/CTAN/}
+            \item \url{http://tug.org/}
+        \end{itemize}
+    \end{frame}

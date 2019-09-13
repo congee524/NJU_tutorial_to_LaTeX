@@ -1,0 +1,118 @@
+\section{来做幻灯片}
+\begin{frame}
+	诚如本讲义所展示的，使用\LaTeX 的\texttt{beamer}文档类型可以制作幻灯片。其在语法上与普通的文档别无二致，唯一区别在于组成的基本单位变为了\textbf{帧}(frame)。
+\end{frame}
+
+\subsection{帧}
+\begin{frame}[fragile]{一帧即为一页}
+	\begin{itemize}
+		\item 每一页的内容都是以 \verb|\begin{frame}|开始，以 \verb|\end{frame}|结尾
+		\item 如果内容简短，也可以采用\verb|\frame{<text>}|的形式
+		\begin{itemize}
+			\item \verb|\frame{\titlepage} %标题页| 
+			\item \verb|\frame{\tableofcontents} %目录页|
+		\end{itemize}
+	\end{itemize}	
+\end{frame}
+\begin{frame}[fragile]{标题页}
+	\begin{itemize}
+		\item 与\texttt{article}类文档等用法相同，只是相比而言更为详细
+		\item 以本讲义的标题页为例
+\begin{lstlisting}
+\title[\LaTeX 教程]{\LaTeX ~Tutorials}
+\subtitle{Simple and professional}
+\author[高嵩，黄秉焜]{Song Gao, Bingkun Huang}
+\institute[南京大学]{Nanjing University}
+\date[2018.10.28]{\today}
+\logo{\includegraphics[width=15pt]{NJU.jpg}}
+\end{lstlisting}
+		\item 方括号内为短标题，显示位置视主题模板而定，大括号内为长标题，显示于标题页
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{文档层次与目录}
+	\begin{itemize}
+		\item 一般最高为 \verb|\section|，其次为 \verb|\subsection|，而 \verb|\subsubsection|及以下很少使用
+		\item 使用\verb|\tableofcontents|生成目录
+		\item 有可选项：\verb|hideallsubsection|和\verb|currentsection|等
+		\item 与\verb|\AtBeginSection[]{}|配合使用
+\begin{lstlisting}
+\AtBeginSection[]
+{
+  %\begin{frame}
+    \tableofcontents[currentsection,hideallsubsections]
+  %\end{frame}
+}
+\end{lstlisting}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{帧标题}
+	\begin{itemize}
+		\item 每一帧都有一个\texttt{frametitle}和一个\texttt{framesubtitle}
+		\item 标准使用格式是这样的
+\begin{lstlisting}
+%begin{frame}
+\frametitle{标题}
+\framesubtitle{副标题}
+%内容
+%\end{frame}
+\end{lstlisting}
+		\item 这太麻烦了，可以简写成
+\begin{lstlisting}
+%\begin{frame}{标题}{副标题}
+%内容
+%\end{frame}
+\end{lstlisting}
+		\item 标题和副标题都是可选项
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{最常用的环境——\texttt{itemize}}
+	\begin{itemize}
+		\item 这是第一层
+		\begin{itemize}
+			\item 这是第二层
+			\begin{itemize}
+				\item 这是第三层
+				\item 没有第四层
+			\end{itemize}
+			\item 超出三层会报错
+		\end{itemize}
+	\end{itemize}
+	\small
+\begin{lstlisting}
+\begin{itemize}
+  \item 这是第一层
+  \begin{itemize}
+    \item 这是第二层
+    \begin{itemize}
+      \item 这是第三层
+      \item 没有第四层
+    \end{itemize}
+    \item 超出三层会报错
+  \end{itemize}
+\end{itemize}
+\end{lstlisting}
+\end{frame}
+\subsection{选择主题}
+\begin{frame}[fragile]{主题}
+	\begin{itemize}
+		\item \verb|\usetheme{ }| 选择主题
+		\item \verb|\usecolortheme{ }| 选择颜色主题
+		\item \href{https://hartwork.org/beamer-theme-matrix/}{\textcolor{blue}{这个网页}}列出了所有beamer自带的主题与颜色主题
+		\item \verb|\usefonttheme{ }| 还可以选择字体主题
+		\item 按照国际惯例在slides中应使用无衬线字体，但是这种情况下的公式非常丑陋
+		\item \verb|\usefonttheme{professionalfonts}|提供了解决方案，对于数学环境它将改用有衬线字体，正如前面的例子所示
+	\end{itemize}
+\end{frame}
+\subsection{动态展示}
+\begin{frame}[fragile]{项目依条出现}
+	\begin{itemize}
+		\item 这里给出一条最简单的动画显示的命令 \verb|\pause| \pause
+		\item 得到的效果如此页所示 \pause
+	\end{itemize}
+\begin{lstlisting}
+\begin{itemize}
+  \item 这里给出一条最简单的动画显示的命令 \verb|\pause| \pause
+  \item 得到的效果如此页所示 \pause
+\end{itemize}
+\end{lstlisting}
+\end{frame}

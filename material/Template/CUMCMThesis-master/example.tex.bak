@@ -1,0 +1,225 @@
+% !Mode:: "TeX:UTF-8"
+%!TEX program  = xelatex
+
+\documentclass{cumcmthesis}
+%\documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页
+\usepackage{float}
+\usepackage{url}
+\usepackage{enumitem}
+\title{储油罐的变位识别与罐容表标定}
+\tihao{A}
+\baominghao{}
+\schoolname{南京大学}
+\membera{卢非池}
+\memberb{骆靓川}
+\memberc{黄秉焜}
+\supervisor{}
+\yearinput{2018}
+\monthinput{07}
+\dayinput{29}
+
+\begin{document}
+
+ \maketitle
+ \begin{abstract}
+
+
+\keywords{}
+\end{abstract}
+
+
+\newpage
+
+\section{问题重述}
+    \subsection{问题背景}
+    加油站的储存燃油的地下储油罐有与之配套的“油位计量管理系统”，并且该油位计量管理系统采用流量计以及油位计测量进油量、出油量和罐内油位高度等数据，通过预先标定的罐容表，亦即罐內油位高度和储油量的对应关系进行实时计算，来得到罐內油位高度以及储油量的变化情况。
+然而由于地基变形等原因，许多储油罐在使用一段时间后，罐体的位置会发生纵向倾斜和横向偏转等变化，我们在下面统称纵向倾斜和横向偏转为变位，罐容表由此发生改变。因此，我们需要定期对罐容表进行重新标定。图1是实际储油罐尺寸及形状示意图，主体为圆柱体，两端为球罐体，图2是该实际储油罐纵向倾斜变位的示意图，图3是该实际储油罐横向偏转变位的横截面示意图。
+我们需要用数学建模的方法研究储油罐变位识别的问题并对罐容表进行重新标定。
+
+    \subsection{问题提出}
+    \begin{enumerate}[label = (一)]
+    \item 首先用两端平头的椭圆柱体所制作的小椭圆型储油罐对罐体无变位和倾斜角α=4.1°的的纵向倾斜两种情况进行实验，实验数据在附件1中详细列出，我们需要建立数学模型研究罐体变位对罐容表的影响。并对变位后的储油罐的罐容表进行油位高度间隔为1cm的重新标定。
+    \end{enumerate}
+    \begin{enumerate}[label = (二)]
+    \item 对于实际储油罐，我们需要建立罐体变位后标定罐容表的数学模型，亦即罐内储油量与油位高度以及变位参数的一般关系，此处变为参数包括纵向倾斜角度α与横向偏转角度β。我们需要利用附件2中罐体变位后在进油以及出油过程中的实际检测数据，根据我们所建立的数学模型确立变位参数α和β，并由此对罐容表进行油位高度间隔为10cm的重新标定。进一步地，我们需要结合附件2中的实际检测数据分析检验我们模型的正确性以及方法的可靠性。
+    \end{enumerate}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{figure1.png}
+\caption{储油罐正面图}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{figure2.png}
+\caption{储油罐纵向倾斜变位后示意图}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{figure3.png}
+\caption{储油罐截面示意图}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.6]{figure4.png}
+\caption{小椭圆型油罐形状及尺寸示意图}
+\end{center}
+\end{figure}
+
+\section{问题分析}
+
+\subsection{问题一分析}
+首先，我们根据图3中储油罐截面示意图中小椭圆型油罐相关数据得出无变位时罐容表的理论标定值与罐内油位高度的表达式，记其为模型一，同时用MATLAB画出曲线1。同时，结合附件1中无变位进油与无变位出油时储油罐中油量容积与油位高度的数据作出另外1条曲线2，用MATLAB将两条条曲线进行比较，分析误差，以及产生误差的原因，并根据误差的表现形式对误差进行拟合，进而对模型一的表达式进行修正。
+接下来分析小椭圆形油罐倾斜变位时的情况，我们根据题上给出的α的值，得出罐容表的理论标定值与罐内油位高度的表达式，记为模型二，同时用MATLAB画出曲线3，同时，结合附件1中倾斜变位进油与倾斜变位出油的数据做出另外一条曲线4，用MATLAB将两条曲线进行比较，分析误差，以及误差产生的原因，并根据误差的表现形式对误差进行拟合，进而对模型二的表达式进行修正。
+
+\subsection{问题二分析}
+我们结合第一问的情况，首先给出无变位时理论储油罐储油量的体积与高度的表达式，并与显示油量容积进行比对，接下来，沿用第一问的结论，先考虑只有纵向变位的情况，考虑椭圆长半轴和短半轴相等的特殊情况，增加对实际储油罐两端球缺部分的考虑，并在此基础上考虑横向变位，得出储油罐理论储油容积与罐内油量高度的表达式（其中含有α，β），令α=β=0，将此模型对应的储油罐储油体积与显示容量体积进行比对，以此验证模型的合理性，如若不合理，则进行误差分析并对模型进行修正，最终得到储油罐纵向变位和横向变位时理论容积与罐内油量高度的表达式（其中含α、β），结合附件2中数据，对α、β在一定范围内进行遍历，利用最小二乘法算出满足题意的α、β值，并对罐容表进行标定。
+
+\newpage
+
+\section{模型的假设}
+\begin{enumerate}
+\item 忽略油罐中进油管、出油管和油浮子的体积
+\item 油罐在进油和出油时油量没有损耗，且进油量和出油量为准确值
+\item 认为油位探针的读数为准确值
+\end{enumerate}
+
+
+\section{模型的建立}
+
+%\begin{equation}
+%\begin{flushleft}
+%\begin{aligned}
+%S &= 1\\
+%&= 2
+%\end{aligned}
+%\end{flushleft}
+%\end{equation}
+
+\begin{flalign*}
+S(h) &= \frac{\pi ab}{2} + 2a(h-b)\sqrt{1 - \frac{1}{b^2}(b-h)^2}\\
+     &\quad + sgn(h-b)\frac{b}{a}\left[\frac{1}{2}ab \arccos{\sqrt{1 - \frac{1}{b^2}(b-h)^2}} - \frac{a^2}{2b}\sqrt{1 - \frac{1}{b^2}(b-h)^2}(b-h)sgn(h-b) \right]
+\end{flalign*}
+
+%\section{符号说明}
+%\begin{center}
+%\begin{tabular}{cc}
+% \hline
+% \makebox[0.3\textwidth][c]{符号}	&  \makebox[0.4\textwidth][c]{意义} \\ \hline
+% D	    & 木条宽度（cm） \\ \hline
+% L	    & 木板长度（cm）  \\ \hline
+% W	    & 木板宽度（cm）  \\ \hline
+% N	    & 第n根木条  \\ \hline
+% T	    & 木条根数  \\ \hline
+%\end{tabular}
+%\end{center}
+%
+%
+%
+%\section{绘制普通三线表格}
+%表格应具有三线表格式，因此常用 booktabs宏包，其标准格式如表~\ref{tab001}~所示。
+%\begin{table}[!htbp]
+%\caption{标准三线表格}\label{tab001} \centering
+%\begin{tabular}{ccccc}
+%\toprule[1.5pt]
+%$D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in)\\
+%\midrule[1pt]
+% 5 & 269.8 & 0.000674 & 1.79 & 0.04089\\
+%10 & 421.0 & 0.001035 & 3.59 & 0.04089\\
+%20 & 640.2 & 0.001565 & 7.18 & 0.04089\\
+%\bottomrule[1.5pt]
+%\end{tabular}
+%\end{table}
+%
+%其绘制表格的代码及其说明如下。
+%\begin{tcode}
+%\begin{table}[!htbp]
+%\caption[标签名]{中文标题}
+%\begin{tabular}{cc...c}
+%\toprule[1.5pt]
+%表头第1个格   & 表头第2个格   & ... & 表头第n个格  \\
+%\midrule[1pt]
+%表中数据(1,1) & 表中数据(1,2) & ... & 表中数据(1,n)\\
+%表中数据(2,1) & 表中数据(2,2) & ... & 表中数据(2,n)\\
+%...................................................\\
+%表中数据(m,1) & 表中数据(m,2) & ... & 表中数据(m,n)\\
+%\bottomrule[1.5pt]
+%\end{tabular}
+%\end{table}
+%\end{tcode}
+%
+%\bigskip
+%table环境是一个将表格嵌入文本的浮动环境。
+%tabular环境的必选参数由每列对应一个格式字符所组成：c表示居中，l表示左对齐，r表示右对齐，其总
+%个数应与表的列数相同。此外，\verb|@{文本}|可以出现在任意两个上述的列格式之间，其中的文本将被插入每一行
+%的同一位置。表格的各行以\verb|\\|分隔，同一行的各列则以\&分隔。
+%\verb|\toprule|、\verb|\midrule|和\verb|\bottomrule|三个命令是由booktabs宏包提供的，其
+%中\verb|\toprule|和\verb|\bottomrule|分别用来绘制表格的第一条（表格最顶部）和第三条（表格最底部）水平线，
+%\verb|\midrule|用来绘制第二条（表头之下）水平线，且第一条和第三条水平线的线宽为1.5pt，第二条水平线的线宽为1pt。
+%引用方法：“如表~\verb|\ref{标签名}|~所示”。
+%
+%
+%参考文献
+%\begin{thebibliography}{9}%宽度9
+% \bibitem{bib:one} ....
+% \bibitem{bib:two} ....
+%\end{thebibliography}
+%
+%\newpage
+%附录
+%\appendix
+%\section{排队算法--matlab 源程序}
+%\begin{lstlisting}[language=matlab]
+%kk=2;[mdd,ndd]=size(dd);
+%while ~isempty(V)
+%[tmpd,j]=min(W(i,V));tmpj=V(j);
+%for k=2:ndd
+%[tmp1,jj]=min(dd(1,k)+W(dd(2,k),V));
+%tmp2=V(jj);tt(k-1,:)=[tmp1,tmp2,jj];
+%end
+%tmp=[tmpd,tmpj,j;tt];[tmp3,tmp4]=min(tmp(:,1));
+%if tmp3==tmpd, ss(1:2,kk)=[i;tmp(tmp4,2)];
+%else,tmp5=find(ss(:,tmp4)~=0);tmp6=length(tmp5);
+%if dd(2,tmp4)==ss(tmp6,tmp4)
+%ss(1:tmp6+1,kk)=[ss(tmp5,tmp4);tmp(tmp4,2)];
+%else, ss(1:3,kk)=[i;dd(2,tmp4);tmp(tmp4,2)];
+%end;end
+%dd=[dd,[tmp3;tmp(tmp4,2)]];V(tmp(tmp4,3))=[];
+%[mdd,ndd]=size(dd);kk=kk+1;
+%end; S=ss; D=dd(1,:);
+% \end{lstlisting}
+% \section{规划解决程序--lingo源代码}
+%\begin{lstlisting}[language=c]
+%kk=2;
+%[mdd,ndd]=size(dd);
+%while ~isempty(V)
+%    [tmpd,j]=min(W(i,V));tmpj=V(j);
+%for k=2:ndd
+%    [tmp1,jj]=min(dd(1,k)+W(dd(2,k),V));
+%    tmp2=V(jj);tt(k-1,:)=[tmp1,tmp2,jj];
+%end
+%    tmp=[tmpd,tmpj,j;tt];[tmp3,tmp4]=min(tmp(:,1));
+%if tmp3==tmpd, ss(1:2,kk)=[i;tmp(tmp4,2)];
+%else,tmp5=find(ss(:,tmp4)~=0);tmp6=length(tmp5);
+%if dd(2,tmp4)==ss(tmp6,tmp4)
+%    ss(1:tmp6+1,kk)=[ss(tmp5,tmp4);tmp(tmp4,2)];
+%else, ss(1:3,kk)=[i;dd(2,tmp4);tmp(tmp4,2)];
+%end;
+%end
+%    dd=[dd,[tmp3;tmp(tmp4,2)]];V(tmp(tmp4,3))=[];
+%    [mdd,ndd]=size(dd);
+%    kk=kk+1;
+%end;
+%S=ss;
+%D=dd(1,:);
+% \end{lstlisting}
+
+
+\end{document} 

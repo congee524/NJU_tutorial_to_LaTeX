@@ -1,0 +1,140 @@
+% the document also for verb and lstlisting
+\documentclass[a5paper]{report}
+\usepackage[top=3cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{alltt}
+\usepackage{verse}
+\usepackage{listings}
+
+\newcommand{\garden}{
+I used to love my garden \\
+But now my love is dead \\
+For I found a bachelor’s button \\
+In black-eyed Susan’s bed.
+}
+
+\renewcommand{\poemtoc}{subsection}
+
+\newcommand{\attrib}[1]{%
+    \nopagebreak{\raggedleft\footnotesize #1\par}}
+
+\title{collection}
+\author{Anonymous}
+\date{\today}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%   one  %%%%%%%%%%%%%%%%%%%%%%
+%\pagenumbering{gobble}
+%%%%%%%%%%%%%%%%%%%   one  %%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%   two  %%%%%%%%%%%%%%%%%%%%%%
+%\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%   two  %%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%   three  %%%%%%%%%%%%%%%%%%%%%%
+%\pagenumbering{roman}
+%%%%%%%%%%%%%%%%%%%   three  %%%%%%%%%%%%%%%%%%%%%%
+
+\section{Love’s lost}
+\garden
+\newpage
+
+\begin{alltt}\normalfont
+I used to love my garden
+But now my love is dead
+For I found a bachelor’s button
+In black-eyed Susan’s bed.
+\end{alltt}
+\newpage
+
+\section{fly}
+\begin{lstlisting}
+    Then am I,
+        A happy fly.
+    If I live,
+        or I die.
+\end{lstlisting}
+\newpage
+
+\section{A Limerick}
+\begin{verse}
+There was an old party of Lyme \\
+Who married three wives at one time. \\
+\hspace{2em} When asked: ‘Why the third?’ \\
+\hspace{2em} He replied: ‘One’s absurd, \\
+And bigamy, sir, is a crime.’
+\end{verse}
+\newpage
+
+\begin{alltt}\normalfont
+There was an old party of Lyme
+Who married three wives at one time.
+     When asked: ‘Why the third?’
+     He replied: ‘One’s absurd,
+And bigamy, sir, is a crime.’
+\end{alltt}
+\newpage
+
+\parshape = 5 0pt \linewidth 0pt \linewidth 2em \linewidth 2em \linewidth 0pt \linewidth
+\noindent There was an old party of Lyme \\
+Who married three wives at one time. \\
+When asked: ‘Why the third?’ \\
+He replied: ‘One’s absurd, \\
+And bigamy, sir, is a crime.’ \par
+\newpage
+
+
+\section{verse: A Limerick}
+\poemtitle{A Limerick}
+\settowidth{\versewidth}{There was an old party of Lyme}
+\begin{verse}[\versewidth]
+There was an old party of Lyme \\
+Who married three wives at one time. \\
+\vin When asked: ‘Why the third?’ \\
+\vin He replied: ‘One’s absurd, \\
+And bigamy, sir, is a crime.’ \\
+\end{verse}
+\newpage
+
+
+\section{verse: Love’s lost}
+\settowidth{\versewidth}{But now my love is dead}
+\poemtitle{Love’s lost}
+\begin{verse}[\versewidth]
+\begin{altverse}
+\garden
+\end{altverse}
+\end{verse}
+\newpage
+
+
+\section{verse: Fleas}
+\poemtitle{Fleas}
+\settowidth{\versewidth}{What a funny thing is a flea}
+\begin{verse}[\versewidth]
+What a funny thing is a flea. \\
+You can’t tell a he from a she. \\
+But he can. And she can. \\
+Whoopee! \\
+\end{verse}
+\attrib{Anonymous}
+\newpage
+
+
+\section{verse: In the beginning}
+\poemtitle{In the beginning}
+\settowidth{\versewidth}{And objects at rest tended to remain at rest}
+\begin{verse}[\versewidth]
+Then God created Newton, \\
+And objects at rest tended to remain at rest, \\
+And objects in motion tended to remain in motion, \\
+And energy was conserved and momentum was conserved and matter was conserved \\
+And God saw that it was conservative. \\
+\end{verse}
+\attrib{Possibly from \textit{Analog}, circa 1950}
+\newpage
+
+\end{document}

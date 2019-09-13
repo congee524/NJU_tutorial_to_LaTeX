@@ -1,0 +1,28 @@
+\documentclass[a5paper]{article}
+\usepackage[procnames]{listings}
+\usepackage{color}
+ 
+\begin{document}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+ 
+\lstset{language=Python, 
+        basicstyle=\ttfamily\small, 
+        keywordstyle=\color{keywords},
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        showstringspaces=false,
+        identifierstyle=\color{green},
+        procnamekeys={def,class}}
+ 
+\begin{lstlisting}
+def hello(name):
+    print 'Hello', name
+ 
+if __name__=='__main__':
+    hello('Me')    
+\end{lstlisting}
+ 
+\end{document}

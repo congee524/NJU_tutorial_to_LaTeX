@@ -1,0 +1,594 @@
+\section{强大的数学公式}
+\begin{frame}[fragile]{写在前面}
+	除了一些最简单的数学公式，大部分都需要宏包支持。建议平时需要输入公式时就直接使用以下四个宏包
+\begin{lstlisting}
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\end{lstlisting}
+	这能够支持大多数的数学公式，而不必去纠结什么时候应该用哪一个、哪一个是多余的。
+
+	\vspace{2ex}
+	在讨论更多的数学环境前，我们统一使用 \cprotect\fbox{\verb|$|$\dots$\verb|$|} 输入行内(inline)公式，\cprotect\fbox{\verb|\[|$\dots$\verb|\]|} 输入行间(displayed)公式。
+
+	\vspace{2ex}
+	\textcolor{red}{注意}：凡是要用到数学字符的地方必须进入数学环境，有些字符虽然不在数学环境下也能输入，但是区别很大！
+	\begin{table}
+		\begin{tabular}{rlrl}
+			\textrm{1+1=2} & $1+1=2$ \quad & \quad \textrm{a sin x} & $a \sin x$
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\subsection{数学符号}
+\begin{frame}[fragile]{字母表与数学字体}
+	在公式环境内默认使用 \cprotect\fbox{\verb|\mathnormal|} 字体，与正文环境下默认字体对比如下
+	\begin{itemize}
+		\item Capital
+		\begin{itemize}
+			\item \textrm{ABCDEFGHIJKLMNOPQRSTUVWXYZ}
+			\item $ABCDEFGHIJKLMNOPQRSTUVWXYZ$
+		\end{itemize}
+		\item Lower case
+		\begin{itemize}
+			\item \textrm{abcdefghijklmnopqrstuvwxyz}
+			\item $abcdefghijklmnopqrstuvwxyz$
+		\end{itemize}
+	\end{itemize}
+	其明显特征是斜体且间距较正文大一些。
+
+	\vspace{2ex}
+	而\cprotect\fbox{\verb|\mathit|}， \cprotect\fbox{\verb|\mathrm|}， \cprotect\fbox{\verb|\mathbf|}， \cprotect\fbox{\verb|\mathsf|}， \cprotect\fbox{\verb|\mathtt|} 这些数学字体通常直接使用相对应的正文字体\cprotect\fbox{\verb|\text**|}。
+\end{frame}
+\begin{frame}[fragile]{选用正确的字体}
+	\begin{itemize}
+		\item 变量使用默认字体，如$x, y, z$
+		\item $\mathrm{e}, \mathrm{i}$等常量应使用罗马体 \cprotect\fbox{\verb|\mathrm|}
+		\item 集合$\mathbb{N}, \mathbb{R}$等可使用 \verb|amssymb|提供的黑板粗体 \cprotect\fbox{\verb|\mathbb|}
+		\item 向量$\bm{v}$应加粗，实现方法有很多，这里推荐 \verb|bm| 宏包的 \cprotect\fbox{\verb|\bm|} 命令
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{希腊字母}
+	\begin{itemize}
+		\item 小写希腊字母
+		\begin{itemize}
+			\item 一般 \cprotect\fbox{\verb|\+小写拼写|}，如 \cprotect\fbox{\verb|\alpha|} 即输出$\alpha$
+			\item 注意$\mu, \nu$分别为 \cprotect\fbox{\verb|\mu|}，\cprotect\fbox{\verb|\nu|}
+			\item 一部分希腊字母有变体，这些变体在数学公式中常常用到，只需在前面加上 \verb|var|
+				\begin{itemize}
+				\item[] \small $\epsilon \rightarrow \varepsilon$ \qquad $\phi \rightarrow \varphi$ \qquad
+					$\theta \rightarrow \vartheta$ \qquad $\sigma \rightarrow \varsigma$ \qquad
+					$\pi \rightarrow \varpi$
+				\end{itemize}
+		\end{itemize}
+		\item 大写希腊字母
+		\begin{itemize}
+			\item 一部分大写希腊字母与拉丁字母形状相同，直接使用即可，如$\mathrm{A, B}$
+			\item 将小写希腊字母输入时首字母大写即可得到其大写形式，如 \cprotect\fbox{\verb|\Gamma|} 得到$\Gamma$
+			\item 大写希腊字母一般用正体，前面加 \cprotect\fbox{\verb|var|} 或使用 \cprotect\fbox{\verb|\mathnormal|} 可得到倾斜形式
+		\end{itemize}
+		\item 小写希腊字母直立体形式？
+		\begin{itemize}
+			\item 数字字体宏包 \verb|upgreek|，在前面加上 \cprotect\fbox{\verb|up|}
+			\item \cprotect\fbox{\verb|\pi|} $\rightarrow$ \cprotect\fbox{\verb|\uppi|} \qquad $\pi \rightarrow \uppi$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{常用符号}
+	\begin{table}\caption{数学普通符号（部分）}
+		\begin{tabular}{llllll}
+			\toprule
+			$\hbar$ & \verb|\hbar| & $\ell$ & \verb|\ell| & $\partial$ & \verb|\partial| \\
+			$\infty$ & \verb|\infty| & $\prime$ & \verb|\prime| & $\emptyset$ & \verb|\emptyset| \\
+			$\nabla$ & \verb|\nabla| & $\forall$ & \verb|\forall| & $\exists$ & \verb|exists| \\
+			$\neg$ & \verb|\neg| & $\varnothing$ & \verb|\varnothing| & $\angle$ & \verb|\angle| \\
+			$\clubsuit$ & \verb|\clubsuit| & $\diamondsuit$ & \verb|\diamondsuit| & $\heartsuit$ & \verb|\heartsuit| \\
+			$\spadesuit$ & \verb|\spadesuit| & $\triangle$ & \verb|\triangle| & $\square$ & \verb|\square| \\
+			$\flat$ & \verb|\flat| & $\natural$ & \verb|\natural| & $\sharp$ & \verb|\sharp|\\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}[fragile]{常用符号}
+	\begin{table}\caption{可同时用在文本和数学模式中的符号}
+		\begin{tabular}{llllllll}
+			\toprule
+			$\#$ & \verb|\#| & $\&$ & \verb|\&| & $\%$ & \verb|\%| & $\$$ & \verb|\$| \\
+			$\_$ & \verb|\_| & $\{$ & \verb|\{| & $\}$ & \verb|\}| & & \\
+			$\P$ & \verb|\P| & $\S$ & \verb|\S| & $\dag$ & \verb|\dag| & $\ddag$ & \verb|\ddag| \\
+			$\copyright$ & \verb|\copyright| & $\pounds$ & \verb|\pounds| & $\ldots$ & \verb|\ldots| & & \\
+			$\checkmark$ & \verb|\checkmark| & $\circledR$ & \verb|\circledR| & $\maltese$ & \verb|\maltese| & $\yen$ & \verb|\yen| \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{table}\caption{希伯来字母}
+		\begin{tabular}{llllllll}
+			\toprule
+			$\aleph$ & \verb|\aleph| & $\beth$ & \verb|\beth| & $\daleth$ & \verb|\daleth| & $\gimel$ & \verb|\gimel| \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}[fragile]{数学算子}{Math operator}
+	\begin{itemize}
+		\item 巨算符(large operator)
+		\begin{itemize}
+			\item 所谓巨算符是大小可变的运算符
+			\item 其在行内与行间大小是不同的
+			\item 一般可以添加有上下标（数学结构中会讲）
+			\item 行内行间上下标的形式也有所不同
+		\end{itemize}
+	\end{itemize}
+	\begin{align*}
+		\int_a^b & \textstyle \int_a^b & \iint_m^n & \textstyle \iint_m^n & \oint_{|z|=1} & \textstyle \oint_{|z|=1} \\
+		\sum_{n=0}^{\infty} & \textstyle \sum_{n=0}^{\infty} & \prod_{1 \le i < j \le n} & \textstyle \prod_{1 \le i < j \le n} & \bigcup\nolimits_{i=1}^{n} & \textstyle \bigcup\limits_{i=1}^{n}
+	\end{align*}
+	\small \quad \cprotect\fbox{\verb|\limits|} \quad \cprotect\fbox{\verb|\nolimits|} \quad 行内公式尽量避免上下限放在算符上下位置
+\end{frame}
+\begin{frame}[fragile]{数学算子}{Math operator}
+	\begin{itemize}
+		\item 文字名称的算子
+		\begin{itemize}
+			\item 使用直立罗马体排印，一般 \cprotect\fbox{\verb|\+名称|} 即可
+			\item 分为两类，带上下限的与不带上下限的
+			\begin{itemize}
+				\item $\log \quad \sin \quad \cosh \quad \arctan \quad \exp$ 
+				\item $\lim \quad \max \quad \min \quad \sup \quad \inf$ 
+			\end{itemize}
+			\item 带上下限的算子使用起来与巨算符相似\\
+				\qquad $\lim\limits_{x \to 0} \qquad \lim_{x \to 0}$
+			\item 如果需要定义新的算子，可以在导言区使用 \verb|\DeclareMathOperator(*)|，带 \verb|*|表示带上下限
+			\begin{itemize}
+				\item \verb|\DeclareMathOperator{\arccot}{arccot}| \\ $\arccot$
+				\item \verb|\DeclareMathOperator{\sign}{sgn}| \\ $\sign$
+				\item \verb|\DeclareMathOperator*{\limsup}{lim\,sup}| \\ $\limsup$
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{二元运算符与关系符}
+	\begin{itemize}
+		\item $\cprotect\overset{\cprotect\fbox{\scriptsize\verb|+|}}{+}, 
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|-|}}{-}, 
+	\cprotect\overset{\cprotect\fbox{\scriptsize\verb|\times|}}{\times}, 
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|\div|}}{\div}$等二元运算符与
+	$\cprotect\overset{\cprotect\fbox{\scriptsize\verb|=|}}{=}, 
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|>|}}{>}, 
+	\cprotect\overset{\cprotect\fbox{\scriptsize\verb|<|}}{<}, 
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|\ne|}}{\ne}, 
+	\cprotect\overset{\cprotect\fbox{\scriptsize\verb|\le|}}{\le}$\textrm{,} $
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|\ge|}}{\ge}$\textrm{,} $
+	\cprotect\overset{\cprotect\fbox{\scriptsize\verb|\ll|}}{\ll}$\textrm{,} $
+	\cprotect\underset{\cprotect\fbox{\scriptsize\verb|\gg|}}{\gg}$等关系符与前后变量之间会保留一定的空隙，且行内公式可以在它们的后面断行。
+	\item 二元关系符数量庞大，除了一些最常用的，一般有需要的时候随用随查即可。
+	\item 使用 \cprotect\fbox{\verb|\mathbin|} 和 \cprotect\fbox{\verb|\mathrel|} 可以将其参数当作二元运算符和二元关系符来对待，可用于定义新运算或一些其他用途。
+	\item 箭头符号与逻辑符号使用时同样可以查阅，不再赘述。
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{定界符}
+	\[\{\frac{\partial y_j}{\partial x_i} | i=1,2,\cdots,n,\, j=1,2,\cdots,m\}\]
+	\[\left\{\frac{\partial y_j}{\partial x_i} \middle| i=1,2,\cdots,n,\, j=1,2,\cdots,m\right\}\]
+	上例中的$\{\,|\,\}$均为定界符，其大小可以根据式子的大小而改变。
+	\begin{itemize}
+		\item 括号定界符
+		\[(\,)\quad[\,]\quad\{\,\}\quad\langle\,\rangle\quad\lfloor\,\rfloor\quad\lceil\,\rceil\]
+		\item 非括号定界符
+		\[/\quad\backslash\quad|\quad\|\]
+		\item 输入
+		\begin{itemize}
+			\item \verb|( ) [ ] \{ \} \langle \rangle|\\
+				\verb|\lfloor \rfloor \lceil \rceil|
+			\item \verb!/ \backslash | \|!
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{如何确定定界符大小}
+	\begin{itemize}
+		\item 自动调整
+		\begin{itemize}
+			\item 使用 \cprotect\fbox{\verb|\left( ... \right)|}，左右必须成对出现
+			\item 如果只需要一个定界符，可以用 \cprotect\fbox{\verb|.|} 表示空的定界符，如 \cprotect\fbox{\verb|\left.|}
+			\item 需要三个定界符的话可使用 \cprotect\fbox{\verb|\middle|} 放在中间，如前例
+		\end{itemize}
+		\item 手动调整
+		\begin{itemize}
+			\item 提供了 \cprotect\fbox{\verb|\big|}，\cprotect\fbox{\verb|\Big|}， \cprotect\fbox{\verb|\bigg|}，\cprotect\fbox{\verb|\Bigg|} 四种大小供手动调节
+			\item 可以在后面加上 \cprotect\fbox{\verb|l m r|} 配套使用
+			\item 自动调整效果不理想时，可以试试手动调整
+			\item 在明确“左右”（如 \cprotect\fbox{\verb|\left \right|} 或 \cprotect\fbox{\verb|\Bigl \Bigr|}）时，可直接使用 \cprotect\fbox{\verb|<>|} 表示尖括号而不致与$<>$混淆
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{标点符号}
+	\begin{itemize}
+		\item 数学环境内应使用英文标点，否则会报错
+		\item 常用的标点符号有$, \quad ; \quad ! \quad ? \quad \colon$
+		\item 应注意的是\cprotect\fbox{\verb|:|}是作为二元关系符存在的（如$f(x):=x, \{x : x>0\}$），而作为标点的冒号是 \cprotect\fbox{\verb|\colon|}，其两侧间距不同，表示比例时则最好用 \cprotect\fbox{\verb|\mathbin{:}|}
+		\item 省略号有很多种，在矩阵中常用到，平时最常用的是 \cprotect\fbox{\verb|\cdots|} $\cdots$ 和 \cprotect\fbox{\verb|\ldots|} $\ldots$ （或直接使用 \cprotect\fbox{\verb|\dots|} 让latex自己选择）
+		\item 标点后是无法换行的，像$f(x,y,z)$谁也不希望在中间断行，而$a_1$\textrm{,} $a_2$\textrm{,} $a_3$\textrm{,} $\cdots$\textrm{,} $a_n$希望能断行时应将标点置于数学环境之外并加上空格
+		\item 数学环境中空格不起作用，但可以分隔各部分让公式结构更清晰
+	\end{itemize}
+\end{frame}
+
+\subsection{数学结构}
+\begin{frame}[fragile]{上下标}
+	\begin{itemize}
+		\item 上标用 \verb|^| 表示，下标用 \verb|_| 表示
+		\item 超过一个字符时就应使用$\{\,\}$
+		\item \verb|'| 是一种特殊的上标，相当于 \cprotect\fbox{\verb|^\prime|}
+		\item 使用 \cprotect\fbox{\verb|\overset|} 和 \cprotect\fbox{\verb|\underset|}可以在任意符号上下方添加标记
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{分式}
+	\begin{itemize}
+		\item 使用 \cprotect\fbox{\verb|\frac{num}{den}|} 输入分式，先输入分子(numerator)，后输入分母(denominator)
+		\item 行内默认使用正文格式(text style)分式，行间默认使用显示格式(display style)分式，可以使用 \cprotect\fbox{\verb|\tfrac|} 与 \cprotect\fbox{\verb|\dfrac|} 指定使用某一种
+		\item 行内使用分式时，$a/b$效果往往比$\frac ab$更好
+		\item 连分式用 \cprotect\fbox{\verb|\cfrac|}，这里不细讲
+		\item 顺带一提，\cprotect\fbox{\verb|\textstyle|} 和 \cprotect\fbox{\verb|\displaystyle|} 可以指定整条公式以哪种方式显示
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{根式}
+	\begin{itemize}
+		\item \cprotect\fbox{\verb|\sqrt[root]{arg}|}
+		\item \texttt{[\,]}内为可选项，用\cprotect\fbox{\verb|\uproot|} 与 \cprotect\fbox{\verb|\leftroot|} 可以微调\texttt{root}位置，参数为整数
+		\item 被开方数不是整数或结构复杂时，通常改用等价的指数形式
+		\item 使用 \cprotect\fbox{\verb|\vphantom|} 占位来获得统一的高度\\[1ex]
+		\verb|\sqrt{\frac 12} < \sqrt{\vphantom{\frac12}2}|
+		\[\sqrt{\frac 12} < \sqrt{\vphantom{\frac12}2}\]
+		\item \cprotect\fbox{\verb|\mathstrut|} 用来平衡不同高度和深度的字母\\[1ex]
+		\verb|\sqrt b \sqrt y|\\
+		\verb|\sqrt{\mathstrut b} \sqrt{\mathstrut y}|
+		\[\sqrt b \sqrt y \quad \rightarrow \quad \sqrt{\mathstrut b} \sqrt{\mathstrut y}\]
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{矩阵}
+	\begin{itemize}
+		\item 输入矩阵结构需要矩阵环境，它们的区别在于外面的括号不同
+		\begin{itemize}
+			\item \texttt{ matrix}环境 \quad 无括号
+			\item \texttt{pmatrix}环境 \quad 圆括号
+			\item \texttt{bmatrix}环境 \quad 方括号
+			\item \texttt{Bmatrix}环境 \quad 大括号
+			\item \texttt{vmatrix}环境 \quad 单竖线
+			\item \texttt{Vmatrix}环境 \quad 双数线
+		\end{itemize}
+		\item 以一个最简单的二阶矩阵为例\\
+		\begin{minipage}[c]{0.5\textwidth}
+\begin{lstlisting}
+\[ \begin{pmatrix}
+       a_{11} & a_{12} \\
+       a_{21} & a_{22}
+   \end{pmatrix} \]
+\end{lstlisting}
+		\end{minipage}
+		\begin{minipage}[c]{0.4\textwidth}
+			\[ \begin{pmatrix}
+				a_{11} & a_{12} \\
+				a_{21} & a_{22}
+			\end{pmatrix} \]
+		\end{minipage}
+	\end{itemize}
+\end{frame}
+\subsection{数学环境}
+\begin{frame}[fragile]{概述}
+	我们先前使用的 \cprotect\fbox{\verb|\[|$\dots$\verb|\]|} 实质是
+\begin{lstlisting}
+\begin{equation*}
+    ...
+\end{equation*}
+\end{lstlisting}
+	的缩写，其中“$*$”表示不给该公式标序。
+
+	\vspace{2ex}
+	出于各方面的需求，我们并不满足于这样一个简单居中、无法换行的数学环境，而是会有诸多其他方面的要求。这时我们需要更多的数学环境来提供支持。
+\end{frame}
+\begin{frame}[fragile]{多行公式}{每行均为一个公式}
+	\begin{itemize}
+		\item 简单的多个公式罗列： \verb|gather(*)|
+		\begin{itemize}
+			\item 每行公式都是居中显示的
+			\item 使用 \cprotect\fbox{\verb|\\|} 换行
+			\item 某行不需要编号，在 \cprotect\fbox{\verb|\\|} 前加  \cprotect\fbox{\verb|\notag|} 
+		\end{itemize}
+		\item 公式按关系符对齐： \verb|align(*)|
+		\begin{itemize}
+			\item 使用 \cprotect\fbox{\verb|\\|} 换行，关系符前加 \cprotect\fbox{\verb|&|} 表示对齐
+			\item \cprotect\fbox{\verb|&|} 一般放在二元关系符($=,<,>$等)前面
+			\item 有时可巧用 \cprotect\fbox{\verb|\phantom|} 变通 
+		\end{itemize}
+		\item 多行公式每行都会产生一个编号，不希望产生的话可以使用\cprotect\fbox{\verb|\notag|}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	练习：尝试输出以下公式。
+
+	\begin{minipage}{0.95\textwidth}
+	\begin{gather}
+		\partialratio{A}{x}{y} = \lim_{\Delta x \to 0} \frac{f(x+\varDelta x,y)-f(x,y)}{\varDelta x} \\
+		\partialratio{A}{y}{x} = \lim_{\Delta y \to 0} \frac{f(x,y+\varDelta y)-f(x,y)}{\varDelta y}
+	\end{gather}
+	\hrule
+	\begin{align}
+		& \mathrel{\phantom{=}} (a + b)(a^2 - ab + b^2)\notag \\
+		& = a^3 - a^2b + ab^2 + a^2b - ab^2 + b^3\notag \\
+		& = a^3 + b^3
+	\end{align}
+	\end{minipage}
+\end{frame}
+\begin{frame}[fragile]{多行公式}
+	\begin{itemize}
+		\item \verb|align(*)| 的另一个用处：排版多列公式
+		\begin{itemize}
+			\item 每行的基本格式
+			\begin{itemize}
+				\item[] \verb|a &= b  &  c &= d  &  e &= f \\|
+			\end{itemize}
+			\item 最后一行不需要 \cprotect\fbox{\verb|\\|}
+			\item 按照行来标序
+			\item \cprotect\fbox{\verb|&|} 必然为奇数个，出现偶数个会报错（为什么？）
+		\end{itemize}
+		\item 关于 \verb|flalign(*)|
+		\begin{itemize}
+			\item 与 \verb|align(*)| 是类似的
+			\item 会把多列公式水平方向分散对齐
+		\end{itemize}
+		\item 关于 \verb|alignat(*)|
+		\begin{itemize}
+			\item 与 \verb|align(*)| 也是类似的
+			\item 不会主动产生间距，需要手动输入间距大小
+			\item 需要一个参数表示每行要对齐的公式个数
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	对比 \verb|align(*)| 与 \verb|flalign(*)|
+
+	\vspace{2ex}
+	\clean
+	\begin{minipage}{0.49\textwidth}
+		\begin{itemize}
+			\item 使用 \verb|align|
+			\begin{align}
+				x + y &= 2 & x &= 1 \\
+				x - y &= 0 & y &= 1
+			\end{align}
+		\end{itemize}
+	\end{minipage}
+	\clean
+	\begin{minipage}{0.49\textwidth}
+		\begin{itemize}
+			\item 使用 \verb|flalign|
+			\begin{flalign}
+				x + y &= 2 & x &= 1 \\
+				x - y &= 0 & y &= 1
+			\end{flalign}
+		\end{itemize}
+	\end{minipage}
+
+	\vspace{3ex}
+	巧用 \verb|alignat|（使用 \verb|align|必须借助 \cprotect\fbox{\verb|\phantom|}）
+
+	\begin{minipage}{0.69\textwidth}
+\begin{lstlisting}
+\begin{alignat*}{5}
+    &1 & &+2 & &+3 & &+4 & &=10 \\
+    &1 & &   & &+3 & &   & &=4 \\
+    &  & &+2 & &   & &+4 & &=6
+\end{alignat*}
+\end{lstlisting}			
+	\end{minipage}
+	\begin{minipage}{0.29\textwidth}
+		\begin{alignat*}{5}
+			&1 & &+2 & &+3 & &+4 & &=10 \\
+			&1 & &   & &+3 & &   & &=4 \\
+			&  & &+2 & &   & &+4 & &=6
+		\end{alignat*}
+	\end{minipage}
+\end{frame}
+\begin{frame}[fragile]{多行公式}
+	\begin{itemize}
+		\item 如何在多行公式之间插入说明性文字？
+		\begin{itemize}
+			\item 每次都退出数学环境输入文字过于麻烦
+			\item 退出数学环境会破环上下公式间对齐关系
+		\end{itemize}
+		\item \cprotect\fbox{\verb|\text|} 行内插入文字
+		\item \cprotect\fbox{\verb|\intertext|} 换行顶格插入文字（前一行的 \cprotect\fbox{\verb|\\|} 可省略）
+		\item \cprotect\fbox{\verb|\shortintertext|} 提供更为紧凑的行间距
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	例：
+
+	\vspace{2ex} \clean
+	绝热过程中，$Q=0$，不做非膨胀功时，有
+	\begin{gather}
+		\di U = \delta W
+		\quad \text{或} \quad
+		\di U + p \di V = 0
+		\shortintertext{已知}
+		\todi{U}{T}{V}
+		\shortintertext{对理想气体，}
+		\di U = C_V \di T, \quad \Delta U = \int_{T_1}^{T_2}C_V \di T
+		\intertext{若$C_V$为常数，}
+		\Delta U = C_V(T_2-T_1) = W
+	\end{gather}
+\end{frame}
+\begin{frame}[fragile]{多行公式}
+	\begin{itemize}
+		\item 多个联系紧密的公式如何共用一个编号？
+		\begin{itemize}
+			\item[] 使用 \verb|subequations| 环境
+		\end{itemize}
+		\item 示例：
+\begin{lstlisting}
+\begin{subequations}
+\begin{align}
+  a \cdot b &= b \cdot a \\
+  (a \cdot b) \cdot c &= a \cdot (b \cdot c) \\
+  a \cdot (b + c) &= a \cdot b + a \cdot c 
+\end{align}
+\end{subequations}
+\end{lstlisting}
+		\clean \vspace{-0.5cm}
+		\begin{minipage}{0.7\textwidth}
+			\begin{subequations}
+				\begin{align}
+					a \cdot b &= b \cdot a \\
+					(a \cdot b) \cdot c &= a \cdot (b \cdot c) \\
+					a \cdot (b + c) &= a \cdot b + a \cdot c 
+				\end{align}
+			\end{subequations}
+		\end{minipage}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+练习：尝试输出如下的麦克斯韦方程组。
+
+	\vspace{2ex} \clean
+\begin{minipage}[t]{0.54\textwidth}
+	\begin{itemize}
+		\item 积分形式
+	\end{itemize}
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.4\textwidth}
+	\begin{itemize}
+		\item 微分形式
+	\end{itemize}
+\end{minipage}
+\begin{minipage}[c]{0.54\textwidth}
+	\begin{subequations}
+		\begin{align}
+			\varoiint_S \bm{D} \cdot \di \bm{S} &= q, \\
+			\varoiint_S \bm{B} \cdot \di \bm{S} &= 0, \\
+			\oint_L \bm{E} \cdot \di \bm{\ell} &= - \iint \frac{\partial \bm{B}}{\partial\, t} \cdot \di \bm{S}, \\
+			\oint_L \bm{H} \cdot \di \bm{\ell} &= I_0 + \iint \frac{\partial \bm{D}}{\partial\, t} \cdot \di \bm{S}.
+		\end{align}
+	\end{subequations}
+\end{minipage}
+\quad
+\begin{minipage}[c]{0.4\textwidth}
+	\begin{subequations}
+		\begin{align}
+			\nabla \cdot \bm{D} &= \rho_f, \\
+			\nabla \cdot \bm{B} &= 0, \\
+			\nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial\, t}, \\
+			\nabla \times \bm{H} &= \bm{J}_f + \frac{\partial \bm{D}}{\partial\, t}.
+		\end{align}
+		\end{subequations}		
+	\end{minipage}
+\end{frame}
+\begin{frame}{拆分公式}{整体为一个公式}
+	行内公式中，对于长公式如$1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20+21+22+23+24+25+26+27+28+29+30$我们先前提过是可以在二元运算符后换行的，但是对于行间公式则不然，见下例。
+	\[
+	1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20+21+22+23+24+25+26+27+28+29+30
+	\]
+	这时候可以使用\texttt{multline(*)}环境。（注意不是 \textcolor{red}{\texttt{multiline}}！）
+\end{frame}
+\begin{frame}[fragile]
+\begin{lstlisting}
+\begin{multline}
+    1+2+3+4+5+6+7 \\
+    +8+9+10+11+12+13 \\
+    +14+15+16+17+18+19+20+21 \\
+    +22+23+24+25 \\
+    +26+27+28+29+30
+\end{multline}
+\end{lstlisting}
+	\clean
+	\begin{multline}
+		1+2+3+4+5+6+7 \\
+		+8+9+10+11+12+13 \\
+		+14+15+16+17+18+19+20+21 \\
+		+22+23+24+25 \\
+		+26+27+28+29+30
+	\end{multline}
+\end{frame}
+\begin{frame}[fragile]{拆分公式}
+	\begin{itemize}
+		\item 可以看出\texttt{multline}环境中首行是左对齐的，尾行是右对齐的，中间行则是居中
+		\item 公式的左右边距是通过长度变量\cprotect\fbox{\verb|\multlinegap|} 和 \cprotect\fbox{\verb|\multlinetaggap|} 设置的
+		\item \cprotect\fbox{\verb|\shoveleft{}|} 和 \cprotect\fbox{\verb|\shoveright{}|} 可设置中间行像首尾两行那样左/右对齐
+	\end{itemize}
+	\setlength{\multlinegap}{4em}
+	\setlength{\multlinetaggap}{4em}
+	\begin{multline*}
+		1+2+3+4+5+6+7 \\
+		\shoveright{+8+9+10+11+12+13} \\
+		+14+15+16+17+18+19+20+21 \\
+		\shoveleft{+22+23+24+25} \\
+		+26+27+28+29+30
+	\end{multline*}
+\end{frame}
+\begin{frame}[fragile]
+\begin{lstlisting}
+\setlength{\multlinegap}{4em}
+\setlength{\multlinetaggap}{4em}
+\begin{multline*}
+    1+2+3+4+5+6+7 \\
+    \shoveright{+8+9+10+11+12+13} \\
+    +14+15+16+17+18+19+20+21 \\
+    \shoveleft{+22+23+24+25} \\
+    +26+27+28+29+30
+\end{multline*}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{拆分公式}
+	\begin{itemize}
+		\item 如果想要在等号处对齐，可以考虑\texttt{split}环境
+		\item \texttt{split}环境应当内嵌于\texttt{equation}中，使用方法上与\texttt{align}等类似
+	\end{itemize}
+	\clean
+	\begin{minipage}{0.43\textwidth}
+\begin{lstlisting}
+\begin{equation}
+\begin{split}
+(AB)(B^{-1}A^{-1}) 
+&= A(BB^{-1})A^{-1} \\
+&= AIA^{-1} 
+ = AA^{-1} \\
+&= I
+\end{split}
+\end{equation}
+\end{lstlisting}
+	\end{minipage}
+	\begin{minipage}{0.56\textwidth}
+		\begin{equation} \begin{split}
+			(AB) (B^{-1}A^{-1}) &= A(BB^{-1})A^{-1} \\
+			&= AIA^{-1} = AA^{-1} \\
+			&= I
+		\end{split} \end{equation}
+	\end{minipage}
+\end{frame}
+\begin{frame}[fragile]{组合成块}
+	如何输入分段函数，如
+	\[ \sign x = \begin{cases}
+	1, & x > 0, \\
+	0, & x = 0, \\
+	-1, & x < 0.
+	\end{cases} \]
+
+	使用\texttt{cases} 环境（同样需要内嵌在\texttt{equation}等环境中）。
+\begin{lstlisting}
+\[ \sign x = \begin{cases}
+  1, & x > 0, \\
+  0, & x = 0, \\
+  -1, & x < 0.
+\end{cases} \]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{组合成块}
+	\begin{itemize}
+		\item 使用\texttt{dcases}环境得到显示格式大小的公式
+		\item 此外使用上述部分环境的\texttt{+ed}模式能得到更多的将公式组合成块的应用
+		\begin{itemize}
+	 		\item 如：\texttt{gathered}, \texttt{aligned}, \texttt{alignedat}, \texttt{multilined}
+	 		\item \texttt{lgathered}与\texttt{rgathered}可以设置环境内的若干行公式左对齐或右对齐，配合定界符使用
+	 	\end{itemize}
+	 	\item 以上环境的使用方法不变，它们都将多行的公式组合成块放在了一个公式环境内
+	 	\item 这里只举几个例子，请自行融会贯通
+	\end{itemize}
+	\centering
+	\texttt{请打开文件equation.tex并编译。}
+\end{frame}

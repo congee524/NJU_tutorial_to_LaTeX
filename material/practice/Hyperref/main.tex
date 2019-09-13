@@ -1,0 +1,57 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{blindtext}
+
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Sharelatex Example},
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+    }
+    
+\urlstyle{same}
+
+\begin{document}
+
+\tableofcontents
+
+\chapter{First Chapter}
+
+This will be an empty chapter and I will put some text here
+
+\begin{equation}
+\label{eq:1}
+\sum_{i=0}^{\infty} a_i x^i
+\end{equation}
+
+The equation \ref{eq:1} shows a sum that is divergent. This formula will be latter used in the page \pageref{second}.
+
+For further references see \href{http://www.sharelatex.com}{Something Linky} or go to the next url: \url{http://www.sharelatex.com} or open the next file \href{run:./file.txt}{File.txt}
+
+It's also possible to link directly any word or \hyperlink{thesentence}{any sentence} in you document.
+
+If you read this text, you will get noinformation.  Really?  Is there no information?
+
+For instance \hypertarget{thesentence}{this sentence}.
+
+
+\Blindtext
+
+\clearpage
+
+\section{Second section} \label{second}
+
+\blindtext
+
+
+
+\Blinddocument
+
+
+\end{document}

@@ -1,0 +1,96 @@
+\section{文章结构}
+
+\subsection{标题}
+	\begin{frame}
+		\begin{itemize}
+			\item 打开 "title.tex"
+			\item 通过添加和取消注释，看看前三种标题页的效果
+			\item 主要是title,author,date（试试能不能在cetxart文档中使用subtitle）
+			\item 自定义标题页
+		\end{itemize}
+	\end{frame}
+
+
+\subsection{章节}
+	\begin{frame}
+		\begin{itemize}
+			\item 打开 "tutorial to the freshmen of DII.pdf"
+			\item 一篇完整的article或者report，其文本结构是怎样的？
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\begin{itemize}
+			\item 这篇report主要是中文内容，这种分模块(section)，生成目录(tableofcontents)的形式，是一种十分经典的文章结构
+			\item 这篇report主要用了以下几个命令（尝试寻找其他的章节命令，比如\verb|\clearpage vs \newpage|）
+\begin{lstlisting}
+\tableofcontents
+\newpage
+\section{•}
+\subsection{•}
+\subsubsection{•}
+\end{lstlisting}
+			\item 章节标题的格式是预定好的，一般需要用通过其他宏包完成定制（\verb|\CTEXset{}|）
+			\item RTFM,查看CTEX宏集手册，尝试定义出“第一节”的章节标题编号
+			\item 联想一下maketitle，document正文区里的代码是与pdf文件一一对应的，所以\verb|\tableofcontents|应该放在.tex文档的哪里？
+			\item 通常主流的latex编辑器都能展示出你的各个section标题，尝试通过它更好地调整你的文章结构，或是快速定位代码
+		\end{itemize}
+	\end{frame}
+	
+
+\subsection{多文件编译}
+	\begin{frame}
+	    \frametitle{问题}
+		\begin{itemize}
+			\item 编译"tutorial to the freshmen of DII"需要多久？\pause
+			\item 如果你要编译一整本书呢？\pause
+			\item 与他人合作写一篇report或beamer等等，是否觉得各方整合起来会遇到很多问题？
+		\end{itemize}\pause
+	按文档的逻辑层次,把整个文档分成多个.tex源文件,便于检索管理以及多人协同编写
+	\end{frame}
+	
+	\begin{frame}[fragile]
+	    \frametitle{以讲座所用beamer为例}
+	    \vspace{-3ex}
+\begin{lstlisting}
+\input{part/preamble}
+\begin{document}
+\frame{\titlepage}
+\frame{\tableofcontents[hideallsubsections]}
+\input{part/try}
+\input{part/docu}
+\input{part/stru}
+\input{part/textenvi}
+\input{part/chin}
+\input{part/formula}
+\input{part/tab&fig}
+\input{part/slides}
+\input{part/auto}
+\input{part/others}
+\end{document}
+\end{lstlisting}
+	\end{frame}
+
+	\begin{frame}[fragile]
+		\indent 划分文档的主要方式是\verb|\input{}|和\verb|\include{}|，将不同的章节内容写在不同的.tex文件中，用上述两种方式引入主文件中。\\
+		\begin{description}
+			\item[input] 相当于ctrl+c和ctrl+v，直接把代码复制过来，稳定、实用
+			\item[include] 常和\verb|\includeonly|一起使用,可以选择性地编译子文件,常用于书籍之类的特大文档
+		\end{description}
+		\indent 两种方式的编译效果有细节上的不同，自己试试
+	\end{frame}
+
+	\begin{frame}
+	截图来自stackexchange.com，题为input vs include
+	\includegraphics[width=\textwidth]{img//vs.png}	
+	\end{frame}
+
+	\begin{frame}[fragile]
+		我们用的比较多的是input，当你觉得某一部分代码太长时，可以考虑写在别的.tex文件中，精简主文件，平时主要用在下面几种情况
+		\begin{itemize}
+			\item 导言区繁多的设置（通常会写在名为preamble的文件中，请看问求的作业模板）
+			\item 异常庞大的表格
+			\item 设置复杂的图片（比如需要使用很多子图subfig时）
+		\end{itemize}
+		此外可以去了解一下\verb|\endinput|的使用
+	\end{frame}

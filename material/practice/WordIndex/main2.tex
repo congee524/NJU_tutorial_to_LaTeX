@@ -1,0 +1,46 @@
+% -* utf8 *-
+\documentclass{ctexbook}
+\usepackage{makeidx}
+\makeindex %%生成索引
+\newcommand{\iemph}[2][]{\emph{#2}\index{#1#2}}
+\usepackage{glossaries}
+\makeglossaries %%生成符号列表
+\usepackage{hyperref}
+%%定义一个生成符号列表的命令
+\newcommand{\mysymbol}[3]{%
+\newglossaryentry{#1}{%
+      name={\ensuremath{#2}},%
+      text={\ensuremath{#2}},%
+      description={#3},%
+      sort={#1}%
+    }%
+\expandafter\newcommand\expandafter{\csname smb#1\endcsname}{\gls{#1}}%
+\expandafter\newcommand\expandafter{\csname #1\endcsname}{\ensuremath{#2}}%
+}
+%% 自行定义其他更多符号
+\mysymbol{Ad}{\operatorname{Ad}}{伴随表示, 伴随作用}
+\mysymbol{BC}{\mathcal{B}}{Banach空间}
+\begin{document}
+\chapter{测试}
+\section{测试索引}
+  我们称$E$是一个\iemph[丛!]{向量丛}, 若\ldots
+  \newpage
+\section{测试符号列表}
+  这里, 我们记$\smbAd$为李群的\iemph{伴随表示}\ldots
+  \newpage
+  其中, $\Ad$是群的伴随作用\ldots
+  \newpage
+  这里, 我们希望再次将$\smbAd$加入符号列表\ldots
+  \newpage
+  注意, 我们对$\smbBC$的命名方法, 是符号B再加后缀C, 这里C表示\verb|\mathcal|.
+  \begin{appendix}
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{符号列表}
+    \printglossary[title={符号列表}]
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{索引}
+    \printindex
+  \end{appendix}
+\end{document}

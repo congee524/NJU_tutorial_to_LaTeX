@@ -1,0 +1,382 @@
+\section{图表与浮动体}
+
+\subsection{构建表格}
+\begin{frame}{tabular与array}
+	\begin{itemize}
+		\item tabular主要用于文本环境（数学模式下也可使用，但是还是按照文本模式排版）
+		\item array用在数学环境中，主要用于排版复杂矩阵等包含数学符号的公式
+		\item 二者用法上是相似的，这里只讲tabular
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{基本格式}
+\begin{lstlisting}
+\begin{tabular}[<垂直对齐>]{<列格式说明>}
+%   \hline
+    <表项> & <表项> & ... & <表项> \\
+%   \hline
+    ...
+\end{tabular}
+\end{lstlisting}
+	\begin{itemize}
+		\item 垂直对齐选项可选填
+		\begin{itemize}
+			\item \texttt{t} \qquad 按表格顶部对齐
+			\item \texttt{b} \qquad 按表格底部对齐
+			\item \texttt{< >} \quad 垂直居中
+		\end{itemize}
+		\item 列格式说明符最基本的有
+		\begin{itemize}
+			\item \texttt{l} \quad 本列左对齐
+			\item \texttt{c} \quad 本列居中
+			\item \texttt{r} \quad 本列右对齐
+			\item \texttt{|} \quad 列之间的竖线
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	\begin{itemize}
+		\item 每行单元格之间以 \verb|&|相隔，\verb|\\|用来换行
+		\item 单元格内进行的设置作用域仅局限于本单元格
+		\item \cprotect\fbox{\verb|\hline|} 表示两行间添加一条横线
+	\end{itemize}
+	例：
+
+	这是一张表格：
+	\begin{tabular}[b]{|c|lr|}
+		\hline
+		\bfseries 居中 & \ttfamily 靠左 & \rmfamily \itshape 靠右 \\
+		\hline
+		11111111 & 2222 & 4444444 \\
+		abcdef & ghijklm & nopqrstuvwxyz \\
+		\hline
+	\end{tabular}
+\begin{lstlisting}
+这是一张表格：
+\begin{tabular}[b]{|c|lr|}
+\hline
+\bfseries 居中 & \ttfamily 靠左 & \rmfamily\itshape 靠右 \\
+\hline
+11111111 & 2222 & 4444444 \\
+abcdef & ghijklm & nopqrstuvwxyz \\
+\hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]
+	\begin{itemize}
+		\item 更多列格式说明符
+		\begin{itemize}
+			\item \verb|p{<宽>}| 本列具有固定宽度且可以自动换行，用于处理过多字符的单元格
+			\item \verb|@{<内容>}} 将\texttt{<内容>}|作为两列之间的间隔，同时会取消列间的空隙
+			\item \verb|*{<计数>}{<列格式说明>}| 将\verb|<列格式说明>|重复\verb|<计数>|次
+		\end{itemize}
+	\end{itemize}
+	\begin{table}
+		\centering
+		\begin{tabular}{|c|*{3}{r@{.}l|}p{4em}|}
+			\hline
+			姓名 & \multicolumn{2}{c|}{收入} & \multicolumn{2}{c|}{支出} & \multicolumn{2}{c|}{结余} & \multicolumn{1}{c|}{备注} \\
+			\hline
+			qaq & 500 & 01 & 297 & 74 & 202 & 27 & 勤俭持家\\
+			\hline
+			orz & 50000 & 00 & 135345 & 53 & -85345 & 53 & 这太太太太太太有钱了 \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}[fragile]
+\begin{lstlisting}
+\begin{tabular}{|c|*{3}{r@{.}l|}p{4em}|}
+\hline
+姓名 & \multicolumn{2}{c|}{收入} & \multicolumn{2}{c|}{支出} & \multicolumn{2}{c|}{结余} & \multicolumn{1}{c|}{备注} \\
+\hline
+qaq & 500 & 01 & 297 & 74 & 202 & 27 & 勤俭持家\\
+\hline
+orz & 50000 & 00 & 135345 & 53 & -85345 & 53 & 这太太太太太太有钱了 \\
+\hline
+\end{tabular}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{单元格的合并与拆分}
+	\begin{itemize}
+		\item 使用 \cprotect\fbox{\verb|\multicolumn{cols}{pos}{text}|} 来合并列
+		\begin{itemize}
+			\item \texttt{cols} 选择需要合并的列数（大于等于1）
+			\item \texttt{pos} 选择合并得的新单元格对齐方式
+			\item \texttt{text} 输入单元格内容
+		\end{itemize}
+		\item 可以只合并1列，目的是暂时改变该列的对齐方式
+		\item 合并行可以使用\texttt{multirow}宏包，与\verb|\cline{i=j}|配合使用
+		\item 用\verb|\vline|制造竖线，达成拆分目的，但是间距不易掌握
+		\item 可以在表格内嵌套表格来拆分，注意被嵌套的表格左右两边都应该是\texttt{@\{\}}
+		\item \verb|\makecell|了解一下
+		\item 骚操作有很多，但是我不会
+		\item 有需要自己查
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	思考：
+\begin{lstlisting}
+\begin{tabular}{|p{8em}|p{8em}|p{8em}|}
+\hline
+默认靠左 & \centering 这里居中 & \multicolumn{1}{c|}{这里也居中} \\%最右边为什么不能用\centering？
+\hline
+\raggedleft 右对齐 & \multicolumn{1}{r|}{也右对齐惹} & 啦啦啦 \\%尝试只排版一排，你发现了什么？
+\hline
+\end{tabular}
+\end{lstlisting}
+	\begin{tabular}{|p{8em}|p{8em}|p{8em}|}
+		\hline
+		默认靠左 & \centering 这里居中 & \multicolumn{1}{c|}{这里也居中} \\
+		\hline
+		\raggedleft 右对齐 & \multicolumn{1}{r|}{也右对齐惹} & 啦啦啦 \\
+		\hline
+	\end{tabular} \\[1ex]
+	\begin{tabular}{|p{8em}|p{8em}|p{8em}|}
+		\hline
+		默认靠左 & \centering 这里居中 & \multicolumn{1}{c|}{这里也居中} \\
+		\hline
+	\end{tabular} \\[1ex]
+	\begin{tabular}{|p{8em}|p{8em}|p{8em}|}
+		\hline
+		\raggedleft 右对齐 & \multicolumn{1}{r|}{也右对齐惹} & 啦啦啦 \\
+		\hline
+	\end{tabular}
+\end{frame}
+\begin{frame}[fragile]{定宽表格与长表格}
+	\begin{itemize}
+		\item 定宽表格可以固定表格总宽度（如等于页宽）
+		\item 可以使用\texttt{tabular*}环境，举个例子\\
+\begin{lstlisting}
+\begin{tabular*}{\textwidth}{|c@{\extracolsep{\fill}}ccccc|}
+\end{lstlisting}
+		\item 也可以用\texttt{tabularx}宏包提供的\texttt{tabularx}环境
+		\item 长表格往往需要分页
+		\item 可使用\texttt{longtable}宏包提供的\texttt{longtable}环境
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{三线表}
+	\begin{itemize}
+		\item 在科技文档中大量使用三线表，三条表格线粗细不同，可以使用\texttt{booktabs}宏包。
+		\item 大致结构如下
+\begin{lstlisting}
+%\usepackage{booktabs}
+\begin{tabular}{ccccc}
+  \toprule
+% 表头
+  \midrule
+% 内容
+  \bottomrule
+\end{tabular} 
+\end{lstlisting}
+	\end{itemize}
+\end{frame}
+
+\subsection{插入图片}
+\begin{frame}[fragile]{插入图片}
+	\begin{itemize}
+		\item 插入外部图片需要使用宏包\texttt{graphicx}
+		\item 使用的命令与格式\\
+\begin{lstlisting}
+%\usepackage{graphicx}
+\includegraphics[<选项>]{<文件名>}
+\end{lstlisting}
+		\item 文件名一般可以省略拓展名，默认与\texttt{tex}文档处于同一路径下 
+	\end{itemize}
+	\begin{center}
+	\verb|\includegraphics{picname}|
+	\end{center}
+\end{frame}
+\begin{frame}{拓展名}
+	\begin{itemize}
+		\item 最初\LaTeX 支持的图片格式有限，往往需要将图片转换格式后才能插入
+		\item \XeLaTeX 支持的图片格式有\textrm{EPS, PDF, PNG, JPEG, BMP}等
+		\item 除非遇到同一路径下两张图片名称相同拓展名不同，否则可以省略拓展名
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{文件位置}
+	\begin{itemize}
+		\item 对于不是同一路径下的图片，可以使用其相对路径或绝对路径来插入图片
+		\item 不论操作系统是什么，两层路径之间统一使用\texttt{/}来分隔
+		\item 相对路径的可移植性比较高，也对于图片较多的情况也有利于文件的整理
+		\begin{itemize}
+			\item 如图片\texttt{selfie.jpg}位于当前路径下一个名为\texttt{pic}的文件夹内，可使用 \verb|\includegraphics{pic/selfie}|
+			\item 如图片\texttt{logo.pdf}位于当前路径的上一层目录下，可使用 \verb|\includegraphics{../logo}|
+		\end{itemize}
+		\item 绝对路径不推荐使用，建议把图片复制到文档同一路径或相近路径下
+		\begin{itemize}
+			\item \verb|\includegraphics{C:/Users/username/Pictures/xx}|
+			\item \verb|\includegraphics{home/username/Pictures/xx}|
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{可选选项}
+	\begin{itemize}
+		\item \texttt{[ ]}内可以选填的内容有很多，最常用的是设置其图片大小
+		\item 默认的图片尺寸是其自然尺寸，对于矢量图是制作的尺寸，对于位图则是点阵数处以图形打印度（DPI）
+		\item 最常用的设置大小的尺寸是\texttt{width}，\texttt{height}和\texttt{scale}
+		\item 举例
+\begin{lstlisting}
+\includegraphics[width=\textwidth]{pic1}
+\includegraphics[height=4cm]{pic2}
+\includegraphics[scale=.3]{pic3}
+\end{lstlisting}
+		\item 此外还有一些其他选项，查阅手册或阅读刘海洋的《LaTeX~入门》都可以学习
+		\item 对图片还能做一些基本的变换
+	\end{itemize}
+\end{frame}
+
+\subsection{绘图语言}
+\begin{frame}{强大的内置绘图功能}
+	\begin{itemize}
+		\item 高端操作，超出本次讲座范围
+		\item \xout{其实我也不会}
+		\item \sout{大佬学会了教教我}
+		\item \href{http://topspeedsnail.com/latex-circuitikz-circuit/}{\textcolor{blue}{这里}}有一个使用\texttt{circuitikz}绘制电路图的教程，更多的资料也可以从书籍或网站上找到
+	\end{itemize}
+\end{frame}
+
+\subsection{浮动体与标题控制}
+\begin{frame}
+	\centering
+	\Huge 公式和浮动体是\LaTeX 完爆Word的两个方面！！
+\end{frame}
+\begin{frame}[fragile]{浮动体环境}
+	直接插入图片或表格的情况下是图（表）文混在一起的，但大多数情况下我们需要把图（表）插在段落之间或单独成页，并配以标题，同时对图片的确切位置没有精确的要求，只要插在某段话附近即可。这时就需要用到浮动体环境。
+	\begin{itemize}
+		\item 对于图片与表格分别有两类对应的浮动体环境：\texttt{figure}和\texttt{table}
+		\item \texttt{figure}为例，基本语法格式为（\texttt{table}类似）
+\begin{lstlisting}
+\begin{figure}[<允许位置>]
+    <任意内容>
+\end{figure}
+\end{lstlisting}
+		\item \verb|<允许位置>|的可选项有\texttt{htbp}
+		\begin{itemize}
+			\item \quad \texttt{h} here \qquad \texttt{t} \quad top \qquad \texttt{b} \quad bottom \qquad \texttt{p} \quad page
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	\begin{itemize}
+		\item 允许位置的可选项可以只有一个，也可以是多个的组合，如 \verb|[htp]|则表示不允许\texttt{b}
+		\item 不填则默认是 \verb|[htbp]|
+		\item 顺序无关紧要，因为总是按照 \verb|[htbp]|的顺序来尝试
+		\item 对于单独的\texttt{h}，很多时候并不能得到令人满意的结果，因此latex会放宽为 \verb|[ht]|
+		\item 若一定要用\texttt{h}，可以采用 \verb|[!h]|
+	\end{itemize}
+\end{frame}
+\begin{frame}{浮动体的本质}
+	\begin{itemize}
+		\item Q: 浮动体仅仅是用来插图表的吗？
+		\item A: 不是的，浮动体里可以放入任意内容（一段文字，一段长代码，一组大型公式等）。
+		\item Q: \texttt{figure}和\texttt{table}有什么区别，是不是前者只能用来插图片后者只能用来插表格？
+		\item A: 不是的，前面已经说过插的东西是任意的。只是习惯上人们这么干，这与默认生成的标题有关。
+		\item Q: 浮动体的本质是什么？
+		\item A: 是一个可以活动的“盒子”。
+		\item \sout{Q: 人类的本质是什么？}
+		\item \sout{A: 人类的本质是什么？}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{caption与label}
+	\begin{itemize}
+		\item 使用\verb|\caption{<title>}|可以为浮动体加上标题，标题可换行
+		\item 通常对于图片标题在下方，而对于表格标题在上方
+		\item 默认情况下\texttt{figure}浮动体产生的标题将注明\texttt{Figure X}，\texttt{table}浮动体产生的标题将注明\texttt{Table X}，\texttt{X}是数字，由计数器控制
+		\item 使用\texttt{ctex}的中文文档则相应地为\texttt{图 X}和\texttt{表 X}
+		\item 这就是为什么通常\texttt{figure}用来插入图片而\texttt{table}用来插入表格，事实上这是可以更改的
+		\item 在\texttt{caption}后加入\verb|\label{<lbl>}|，可用于交叉引用
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{多栏下浮动体宽度}
+	\begin{itemize}
+		\item 使用命令\verb|\twocolumn|即可设置文档为双栏
+		\item 多栏下\texttt{figure}和\texttt{table}浮动体只会占用一栏（宽度为\verb|\columnwidth|）
+		\item 可以使用\texttt{figure*}和\texttt{table*}得到跨栏排版的浮动体
+		\item 跨栏排版只允许\texttt{tp}两个位置参数，通常会排版到下一页的顶部位置
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{并排排版}
+	\begin{itemize}
+		\item 在一个浮动体内可以插入多个图片或表格，它们既可以共用一个\texttt{caption}也可以各自用不同的\texttt{caption}
+		\item 也可以将图片与文字并排排版，但通常将文字放在\verb|\parbox|或者\texttt{minipage}环境中，整体作为一个子段盒子处理
+		\begin{itemize}
+			\item \verb|\parbox[position]{width}{text}|
+			\item \verb|\begin{minipage}[position]{width}| \\
+				  \verb|  text|\\
+				  \verb|\end{minipage}|
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{子图表环境}
+	\begin{itemize}
+		\item \texttt{subcaption}与\texttt{subfigure, subtable}——一个宏包的两种用法
+		\item \verb|\usepackage{caption,subcaption}|
+	\end{itemize}
+	\begin{table}
+		\caption{图表的子标题}
+		\begin{minipage}[b]{.49\textwidth}
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline 图 & 表 \\ \hline
+			\end{tabular}
+			\subcaption{文字表格}
+		\end{minipage}
+		\begin{minipage}[b]{.49\textwidth}
+			\centering
+			$\begin{array}{|c|c|}	
+				\hline \sqrt{2} & 1.414\dots \\ \hline
+				\sqrt{3} & 1.732\dots \\ \hline
+			\end{array}$
+			\subcaption{数字表格}
+		\end{minipage}
+	\end{table}
+\end{frame}
+\begin{frame}[fragile]
+方法一：使用\verb|\subcaption|（配合\texttt{minipage}环境）
+\small
+\begin{lstlisting}
+\begin{table}
+  \caption{图表的子标题}
+  \begin{minipage}[b]{.5\textwidth}
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline 图 & 表 \\ \hline
+    \end{tabular}
+    \subcaption{文字表格}
+  \end{minipage}
+  \begin{minipage}[b]{.5\textwidth}
+    \centering
+    $\begin{array}{|c|c|}
+      \hline \sqrt{2} & 1.414\dots \\ \hline
+      \sqrt{3} & 1.732\dots \\ \hline
+    \end{array}$
+    \subcaption{数字表格}
+  \end{minipage}
+\end{table}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]
+方法二：使用\texttt{subtable/subfigure}环境
+\small
+\begin{lstlisting}
+\begin{table}
+  \caption{图表的子标题}
+  \begin{subtable}[b]{.5\textwidth}
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline 图 & 表 \\ \hline
+    \end{tabular}
+    \caption{文字表格}
+  \end{subtable}
+  \begin{subtable}[b]{.5\textwidth}
+    \centering
+    $\begin{array}{|c|c|}
+      \hline \sqrt{2} & 1.414\dots \\ \hline
+      \sqrt{3} & 1.732\dots \\ \hline
+    \end{array}$
+    \caption{数字表格}
+  \end{subtable}
+\end{table}
+\end{lstlisting}
+\end{frame}

@@ -1,0 +1,59 @@
+\section{中文支持}
+\subsection{了解\CTeX}
+\begin{frame}{How to get Chinese document?}{\CTeX}
+	\CTeX 是最新的也是最便利的\LaTeX 中文支持的开源项目，可以参考其\href{material/LM/CTEXmanual.pdf}{\textcolor{blue}{使用手册}}。
+	\begin{itemize}
+		\item 全面汉化
+		\item 更智能的排版
+		\item 强大的自定义设置
+	\end{itemize}
+	一般使用默认设置即可，有特殊需求可翻阅手册作适当调整。
+\end{frame}
+\begin{frame}
+	\begin{table}\caption{\CTeX 宏集的组成}
+		\footnotesize
+		\begin{tabular}{llp{6cm}}
+			\toprule
+			类别 & 文件 & 说明 \\
+			\midrule
+			文档类 & ctexart.cls & 标准文档类article 的汉化版本，一般适用于短篇幅的文章\\
+			& ctexrep.cls & 标准文档类report 的汉化版本，一般适用于中篇幅的报告\\
+			& ctexbook.cls & 标准文档类book 的汉化版本，一般适用于长篇幅的书籍\\
+			& ctexbeamer.cls & 文档类beamer 的汉化版本，适用于幻灯片演示\\
+			\midrule
+			宏包 & ctex.sty & 提供全部功能，但默认不开启章节标题设置功能，需要使用heading 选项来开启\\
+			& ctexsize.sty & 定义和调整中文字号，在ctex 宏包或CTEX 中文文档类之外单独调用\\
+			& ctexheading.sty & 提供章节标题设置功能，在ctex 宏包或CTEX 中文文档类之外单独调用\\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}[fragile]
+	\begin{itemize}
+		\item 文档类
+\begin{lstlisting}
+\documentclass{ctexart}
+\documentclass{ctexrep}
+\documentclass{ctexbook}
+\documentclass{ctexbeamer}
+\end{lstlisting}		
+		\item 宏包
+\begin{lstlisting}
+\usepackage{ctex}
+\usepackage{ctexsize}      
+\usepackage{ctexheading}   
+\end{lstlisting}
+	\end{itemize}
+	\vspace{2ex}
+	\textcolor{red}{注意}：\texttt{ctexcap} 是默认打开 \texttt{heading} 选项的 \texttt{ctex} 宏包，手册中明确说明其为过时宏包！
+\end{frame}
+\begin{frame}
+	两个最常用选项\texttt{heading}与\texttt{scheme}。
+
+	打开\texttt{ctex.tex}，体会不同选项的区别。
+	\begin{itemize}
+		\item \texttt{ctexart}类文档与\texttt{ctex}宏包的默认选项都是\texttt{heading=true,scheme=chinese}
+		\item \texttt{heading=false,scheme=plain}相当于只是支持中文，所有的版式都还是英文的
+		\item 如果觉得标题居中太蠢了想要靠左，可以用\texttt{heading=false}(\texttt{scheme=chinese}是默认选项不用改)
+	\end{itemize}
+\end{frame}

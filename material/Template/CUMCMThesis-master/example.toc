@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {一、}问题重述}{3}
+\contentsline {subsection}{\numberline {1\tmspace +\thinmuskip {.1667em}.\tmspace +\thinmuskip {.1667em}1}问题背景}{3}
+\contentsline {subsection}{\numberline {1\tmspace +\thinmuskip {.1667em}.\tmspace +\thinmuskip {.1667em}2}问题提出}{3}
+\contentsline {section}{\numberline {二、}问题分析}{6}
+\contentsline {subsection}{\numberline {2\tmspace +\thinmuskip {.1667em}.\tmspace +\thinmuskip {.1667em}1}问题一分析}{6}
+\contentsline {subsection}{\numberline {2\tmspace +\thinmuskip {.1667em}.\tmspace +\thinmuskip {.1667em}2}问题二分析}{6}
+\contentsline {section}{\numberline {三、}模型的假设}{7}
+\contentsline {section}{\numberline {四、}模型的建立}{7}
+\contentsfinish 
